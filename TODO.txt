@@ -7,3 +7,8 @@ Severely cut back on memory usage, migrating everything to flash temporarily
 Modify comms to not use big buffers
 Update location IDs to match reality
 Modify flash write stuff to not use big buffer
+
+Figure out a paging mechanism:
+
+Probably just tune one thing at a time and burn it before tuning some other
+thing. Use pointers to either point at flash or live RAM data if available.
