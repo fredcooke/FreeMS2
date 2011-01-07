@@ -1,0 +1,9 @@
+Adjust core init values to suit ms2 clock setup etc
+Simplify init by commenting out calls to sub parts except bare essentials
+Migrate to correct header/register structure
+Adjust memory references in the Makefile
+Adjust memory references in the linker scripts
+Severely cut back on memory usage, migrating everything to flash temporarily
+Modify comms to not use big buffers
+Update location IDs to match reality
+Modify flash write stuff to not use big buffer
