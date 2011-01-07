@@ -12,3 +12,6 @@ Figure out a paging mechanism:
 
 Probably just tune one thing at a time and burn it before tuning some other
 thing. Use pointers to either point at flash or live RAM data if available.
+
+Configure the ADC setup correctly, and assign to internal vars.
+Rearrange the port T channels to align with MS2Extra usage.
