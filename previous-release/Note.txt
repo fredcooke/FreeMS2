@@ -11,9 +11,3 @@ release of the code. Please attempt to build the code if you want the latest
 at any given time. Beware that "snapshot" code is NOT guaranteed to work.
 Freshly built code can be found in src/firmware/ not in this directory.
 
-Also note :
-
-Only the Simple.s19 and NipponDenso.s19 file are semi functional at this time.
-
-Thank you for your time!
-

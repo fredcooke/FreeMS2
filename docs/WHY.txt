@@ -1,14 +1,20 @@
 An explanation :
 
-You may be wondering why I have chosen to start this project when there are a plethora of other options out there some of which are seemingly DIY already.
+You may be wondering why I have chosen to start this project when the current
+MS2Extra firmware does such a good job of running engines. There are a few
+reasons for this:
 
-I sincerely hope that this document explains that clearly and as concisely as possible.
+1) To provide a Free and Open Source alternative for use with the well tested
+   and documented MegaSquirt hardware family.
+2) To ensure that there is always a from-source firmware option available for
+   MS2 users and their vehicles.
+3) To provide something simple and cleanly written for people to modify for
+   their own purposes that will remain free (libre and gratis) into the future.
+4) For free software and open source purists.
+5) To allow unrestricted modification and improvement of MegaSquirt hardware.
 
-Why create DIYEFI.org?
+It is worth reading the information at this page:
 
-Put simply, it was time for a change for the better.
+http://en.wikipedia.org/wiki/Gratis_versus_Libre
 
-To find out more please read this page : http://www.diyefi.org/why.htm
-
-Thank you for downloading the FreeEMS sources.
-
+Thank you for downloading the FreeMS2 sources.

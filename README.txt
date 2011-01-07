@@ -1,4 +1,9 @@
-#################### FreeEMS - TRUE DIY Engine Management #####################
+################## FreeMS2 - Free & Open Source MegaSquirt 2 ###################
+
+This firmware is intended to run on B&G and compatible MS2 hardware using an
+MS2Extra style pin arrangement. Initial functionality will be to operate the
+standard MS2 output channels in a manner suitable for testing. Currently it will
+not even load to an MS2 device. This README will be updated with new progress.
 
 For the most up to date inforamation, please see the forums at :
 
@@ -10,38 +15,14 @@ www.diyefi.org/disclaimer.htm
 
 Before going any further, please ensure you have the latest release or latest code by visiting :
 
-http://github.com/fredcooke/freeems-vanilla
-
-If you want to modify and build this firmware there an out-of-date guide available :
-
-http://forum.diyefi.org/viewtopic.php?f=8&t=508
-
-For all your documenation needs please see the docs page :
-
-http://docs.freeems.org
-
-Setting up the tuning application is described in the following thread :
-
-http://forum.diyefi.org/viewtopic.php?f=43&t=519
-
-Loading the firmware S19 file to the device :
-
-Firstly you will need hcs12mem setup correctly. Install it as normal, then copy
-the file mc9s12xdp512.dat from the bin directory to /usr/local/share/hcs12mem/
-
-If you are working on the dev board, you need to flip the load/run switch
-to "load" and depress the reset button, prior to flashing.  Return the switch
-to the "run" position when complete.
-
-Also in the bin directory is a bash script, use it with the first argument
-being your serial device, and the second being your s19 file.
+http://github.com/fredcooke/FreeMS2
 
 Please post any and all feedback on code, documentation, the system, anything
 at all, even subtle and minor stuff to the forums :
 
 http://forum.diyefi.org
 
-Thanks for playing with FreeEMS :-)
+Thanks for playing with FreeMS2 :-)
 
 Good luck and regards,
 
