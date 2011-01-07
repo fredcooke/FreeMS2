@@ -1,28 +1,28 @@
-#	FreeEMS - the open source engine management system
+#	FreeMS2 - the open source engine management system
 #
 #	Makefile
 #
 #	Copyright 2008, 2009, 2010 Fred Cooke
 #
-#	This Makefile is part of the FreeEMS project.
+#	This Makefile is part of the FreeMS2 project.
 #
-#	FreeEMS software is free software: you can redistribute it and/or modify
+#	FreeMS2 software is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 3 of the License, or
 #	(at your option) any later version.
 #
-#	FreeEMS software is distributed in the hope that it will be useful,
+#	FreeMS2 software is distributed in the hope that it will be useful,
 #	but WITHOUT ANY WARRANTY; without even the implied warranty of
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #	GNU General Public License for more details.
 #
 #	You should have received a copy of the GNU General Public License
-#	along with any FreeEMS software.  If not, see http://www.gnu.org/licenses/
+#	along with any FreeMS2 software.  If not, see http://www.gnu.org/licenses/
 #
 #	We ask that if you make any changes to this file you email them upstream to
 #	us at admin(at)diyefi(dot)org or, even better, fork the code on github.com!
 #
-#	Thank you for choosing FreeEMS to run your engine!
+#	Thank you for choosing FreeMS2 to run your engine!
 
 
 
@@ -55,9 +55,9 @@
 
 
 # Constants
-VERSION = 0.1.2-SNAPSHOT
-PREVIOUSVERSION = 0.1.1
-OUTPREFIX = freeems
+VERSION = 0.0.1-SNAPSHOT
+PREVIOUSVERSION = 0.0.0
+OUTPREFIX = FreeMS2
 LABEL = $(OUTPREFIX)-$(VERSION)
 
 # Windows differences
@@ -78,7 +78,7 @@ endif
 RELEASEDIR = ../previous-release
 DISTRIBUTIONDIR = ../../$(LABEL)
 DOXYDOCDIR = ../docs/doxygen-html
-MAINDIR = freeems-vanilla
+MAINDIR = FreeMS2
 INCDIR = inc
 BUGDIR = debug
 OUTDIR = output
@@ -86,16 +86,13 @@ OBJDIR = objects
 ASMDIR = assembly
 S19DIR = firmware
 PPCDIR = preprocessedc
-XGASMDIR = $(ASMDIR)$(PATHSEP)xgate
-XGOBJDIR = $(OBJDIR)$(PATHSEP)xgate
 
 # Release tag message file
 RELTAG = $(OUTDIR)/gitTagMessage.txt
 TAGNAME = $(OUTDIR)/gitTagName.txt
 
-# Program prefixes, for the main cpu and for the xgate coprocessor
+# Program prefixes, for the build tools
 PREFIX = m68hc11-
-XGPREFIX = mc9xgate-
 
 # All of the tools
 CP = cp
@@ -107,7 +104,6 @@ DUMP = $(PREFIX)objdump
 NM = $(PREFIX)nm
 RE = $(PREFIX)readelf
 SIZE = $(PREFIX)size
-XGAS = $(XGPREFIX)as
 
 
 
@@ -132,11 +128,11 @@ LOOKUPH = tableLookup.h
 WMFILE = Makefile.windows
 ISRSH = commsISRs.h injectionISRs.h
 COMMSH = commsCore.h blockDetailsLookup.h
-LINKER = memory.x regions.x hc9s12xdp512elfb.x
-GLOBALH1 = freeEMS.h 9S12XDP512.h memory.h globalConstants.h structs.h packetTypes.h
+LINKER = memory.x regions.x hc9s12c128elfb.x
+GLOBALH1 = FreeMS2.h 9S12XDP512.h memory.h globalConstants.h structs.h packetTypes.h
 GLOBALH2 = globalDefines.h errorDefines.h TunableConfigs.h FixedConfigs.h locationIDs.h
 FUELH = fuelAndIgnitionCalcs.h derivedVarsGenerator.h coreVarsGenerator.h
-RPMH = Simple.h NipponDenso.h LT1-360-8.h Subaru-36-2-2-2.h MissingTeeth.h MiataNB.h
+RPMH = Simple.h NipponDenso.h Subaru-36-2-2-2.h MissingTeeth.h MiataNB.h
 
 # Let's keep this to a bare minimum! If you write ASM code
 # please provide an matching alternate C implementation too.
@@ -167,17 +163,16 @@ TUNECLASSES = TunableConfig.c TunableConfig2.c
 UTILCLASSES = tableLookup.c init.c utils.c globalConstants.c
 MATHCLASSES = coreVarsGenerator.c derivedVarsGenerator.c fuelAndIgnitionCalcs.c
 COMCLASSES = flashWrite.c commsCore.c blockDetailsLookup.c
-ISRCLASSES = interrupts.c injectionISRs.c ignitionISRs.c commsISRs.c realtimeISRs.c miscISRs.c xgateVectors.c
+ISRCLASSES = interrupts.c injectionISRs.c ignitionISRs.c commsISRs.c realtimeISRs.c miscISRs.c
 
 # All but the engine position/RPM combined here
-SOURCE = freeEMS.c staticInit.c main.c $(UTILCLASSES) $(MATHCLASSES) $(COMCLASSES) $(ISRCLASSES)
+SOURCE = FreeMS2.c staticInit.c main.c $(UTILCLASSES) $(MATHCLASSES) $(COMCLASSES) $(ISRCLASSES)
 DATA = $(FIXEDCLASSES) $(LOOKUPCLASSES1) $(LOOKUPCLASSES2) $(FUELCLASSES) $(TIMECLASSES) $(TUNECLASSES)
 CLASSES = $(SOURCE) $(DATA)
 
 # Engine position/RPM here
-RPMCLASSES = Simple.c NipponDenso.c LT1-360-8.c Subaru-36-2-2-2.c MissingTeeth.c MiataNB.c
+RPMCLASSES = Simple.c NipponDenso.c Subaru-36-2-2-2.c MissingTeeth.c MiataNB.c
 # future rpm = NissanRB2X.c NissanSR20.c MiataNA.c etc... Insert your file above and get coding!
-XGASMSRCS = xgate.s
 
 
 # Convert extensions
@@ -185,7 +180,6 @@ PREPROCESSED = $(patsubst %.c,$(PPCDIR)/%.pp.c,$(CLASSES))
 ASSEMBLIES = $(patsubst %.c,$(ASMDIR)/%.s,$(CLASSES))
 OBJECTS = $(patsubst %.c,$(OBJDIR)/%.o,$(CLASSES)) $(patsubst %.s,$(OBJDIR)/%.o,$(HANDASMS))
 DUMPS = $(patsubst %.c,$(BUGDIR)/%.dmp,$(CLASSES)) $(patsubst %.s,$(BUGDIR)/%.dmp,$(HANDASMS))
-XGOBJECTS = $(patsubst %.s,$(XGOBJDIR)/%.o,$(XGASMSRCS))
 
 # Convert RPM extensions
 PREPROCESSEDRPM = $(patsubst %.c,$(PPCDIR)/%.pp.c,$(RPMCLASSES))
@@ -253,12 +247,12 @@ GCCOPTS = $(GCCOPTS1) $(GCCOPTS2)
 
 # pass to linker, link for hc12
 # The vectors address in the linker options is the VMA address and must be short form 0xF710, not a paged address.
-LINKOPTS = -no-warn-mismatch,-defsym,vectors_addr=0xF710,-m,m68hc12elfb,-T,hc9s12xdp512elfb.x
-LINKOPTSGC = -no-warn-mismatch,--gc-sections,--print-gc-sections,-defsym,vectors_addr=0xF710,-m,m68hc12elfb,-T,hc9s12xdp512elfb.x
+LINKOPTS = -no-warn-mismatch,-defsym,vectors_addr=0xF710,-m,m68hc12elfb,-T,hc9s12c128elfb.x
+LINKOPTSGC = -no-warn-mismatch,--gc-sections,--print-gc-sections,-defsym,vectors_addr=0xF710,-m,m68hc12elfb,-T,hc9s12c128elfb.x
 # Use this to get a map dump when the linker fails in a confusing way : --print-map
 
 # If using the below option for paged flash, the ADDRESS_TYPE
-# field in the freeEMSloader script should be updated to match.
+# field in the FreeMS2loader script should be updated to match.
 COPYOPTS =  --output-target=srec \
 		--change-section-lma .fixedconf1+0xFD4000 \
 		--change-section-lma .fixedconf2+0xFD4000 \
@@ -573,11 +567,11 @@ linkmsg:
 link: assemble $(OUTDIR) linkmsg $(ALLELFS)
 
 # link the object files into an elf executable
-$(ALLELFS): $(OUTDIR)/$(LABEL)-%.elf: $(OBJDIR)/%.o $(OBJECTS) $(XGOBJECTS)
+$(ALLELFS): $(OUTDIR)/$(LABEL)-%.elf: $(OBJDIR)/%.o $(OBJECTS)
 	@echo $(Q)################################################################################$(Q)
 	@echo $(Q)#               Linking $@ ...$(Q)
 	@echo $(Q)################################################################################$(Q)
-	$(GCC) $(GCCOPTS) -Wl,$(LINKOPTS) -o $@ $< $(OBJECTS) $(XGOBJECTS)
+	$(GCC) $(GCCOPTS) -Wl,$(LINKOPTS) -o $@ $< $(OBJECTS)
 
 
 gclinkmsg:
@@ -588,11 +582,11 @@ gclinkmsg:
 gclink: assemble $(OUTDIR) linkmsg $(GCDELFS)
 
 # link the object files into an elf executable with gc enabled
-$(GCDELFS): $(OUTDIR)/$(LABEL)-%.gc.elf: $(OBJDIR)/%.o $(OBJECTS) $(XGOBJECTS)
+$(GCDELFS): $(OUTDIR)/$(LABEL)-%.gc.elf: $(OBJDIR)/%.o $(OBJECTS)
 	@echo $(Q)################################################################################$(Q)
 	@echo $(Q)#               Linking $@ ...$(Q)
 	@echo $(Q)################################################################################$(Q)
-	$(GCC) $(GCCOPTS) -Wl,$(LINKOPTSGC) -o $@ $< $(OBJECTS) $(XGOBJECTS)
+	$(GCC) $(GCCOPTS) -Wl,$(LINKOPTSGC) -o $@ $< $(OBJECTS)
 # The links with garbage collection are to ensure that there are no warnings
 # TODO find out how to stop .tramp from being collected (or inserted)!
 # This will be the only way once Sean's stuff is done and distributed, I can't wait to cut all this bullshit out!
@@ -679,11 +673,11 @@ size: assemble # TODO this should be run for each s19 target with only the one r
 	$(SIZE) -t $(OBJECTS)
 	@echo $(Q)################################################################################$(Q)
 	@echo $(Q)#                    Add one decoder to the total above and                    #$(Q)
-	@echo $(Q)#                   subtract the size reported for freeEMS.o                   #$(Q)
+	@echo $(Q)#                   subtract the size reported for FreeMS2.o                   #$(Q)
 	@echo $(Q)#                   this will give you the actual image size                   #$(Q)
 	@echo $(Q)################################################################################$(Q)
 	@echo $(Q)#                                                                              #$(Q)
-	@echo $(Q)#                  Thank you for building FreeEMS firmware!!!                  #$(Q)
+	@echo $(Q)#                  Thank you for building FreeMS2 firmware!!!                  #$(Q)
 	@echo $(Q)#                                                                              #$(Q)
 	@echo $(Q)################################################################################$(Q)
 
@@ -724,15 +718,11 @@ assemblemsg:
 	@echo $(Q)#                          Assembling Object Files...                          #$(Q)
 	@echo $(Q)################################################################################$(Q)
 
-assemble: compile $(OBJDIR) $(XGOBJDIR) assemblemsg $(OBJECTS) $(OBJECTSRPM) $(XGOBJECTS)
+assemble: compile $(OBJDIR) assemblemsg $(OBJECTS) $(OBJECTSRPM)
 
 # Generate object files to link
 $(OBJECTS) $(OBJECTSRPM): $(OBJDIR)/%.o: $(ASMDIR)/%.s
 	$(GCC) $(GCCOPTS) -c -o $@ $<
-
-$(XGOBJECTS): $(XGOBJDIR)/%.o: $(XGASMDIR)/%.s
-	$(XGAS) -o $@ $<
-
 
 
 ################################################################################
@@ -849,7 +839,7 @@ $(GCDS19RELS): $(RELEASEDIR)/%.s19: $(S19DIR)/%.s19
 
 relcommit:
 	git add $(RELEASEDIR)
-	git commit -m "Automatically committing release files for FreeEMS version $(VERSION)!" ..
+	git commit -m "Automatically committing release files for FreeMS2 version $(VERSION)!" ..
 
 
 tagmessage:
@@ -886,7 +876,7 @@ zipsrc: distributiondir
 
 # Assembly, release and inc directories don't get removed.
 
-dirs: $(BUGDIR) $(S19DIR) $(PPCDIR) $(OUTDIR) $(OBJDIR) $(XGOBJDIR)
+dirs: $(BUGDIR) $(S19DIR) $(PPCDIR) $(OUTDIR) $(OBJDIR)
 
 $(BUGDIR):
 	@echo $(Q)################################################################################$(Q)
@@ -922,13 +912,6 @@ $(OBJDIR):
 	@echo $(Q)################################################################################$(Q)
 	$(MKDIR) $(OBJDIR)$(PATHSEP)hack
 	rmdir $(OBJDIR)$(PATHSEP)hack
-
-$(XGOBJDIR):
-	@echo $(Q)################################################################################$(Q)
-	@echo $(Q)#                    Creating the xgate object directory...                    #$(Q)
-	@echo $(Q)################################################################################$(Q)
-	$(MKDIR) $(XGOBJDIR)$(PATHSEP)hack
-	rmdir $(XGOBJDIR)$(PATHSEP)hack
 
 distributiondir:
 	@echo $(Q)################################################################################$(Q)

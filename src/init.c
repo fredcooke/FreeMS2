@@ -1,26 +1,26 @@
-/* FreeEMS - the open source engine management system
+/* FreeMS2 - the open source engine management system
  *
  * Copyright 2008, 2009, 2010 Fred Cooke
  *
- * This file is part of the FreeEMS project.
+ * This file is part of the FreeMS2 project.
  *
- * FreeEMS software is free software: you can redistribute it and/or modify
+ * FreeMS2 software is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * FreeEMS software is distributed in the hope that it will be useful,
+ * FreeMS2 software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with any FreeEMS software.  If not, see http://www.gnu.org/licenses/
+ * along with any FreeMS2 software.  If not, see http://www.gnu.org/licenses/
  *
  * We ask that if you make any changes to this file you email them upstream to
  * us at admin(at)diyefi(dot)org or, even better, fork the code on github.com!
  *
- * Thank you for choosing FreeEMS to run your engine!
+ * Thank you for choosing FreeMS2 to run your engine!
  */
 
 
@@ -43,7 +43,7 @@
 
 
 #define INIT_C
-#include "inc/freeEMS.h"
+#include "inc/FreeMS2.h"
 #include "inc/flashWrite.h"
 #include "inc/interrupts.h"
 #include "inc/utils.h"
@@ -51,7 +51,6 @@
 #include "inc/pagedLocationBuffers.h"
 #include "inc/init.h"
 #include "inc/decoderInterface.h"
-#include "inc/xgateVectors.h"
 #include <string.h>
 
 
@@ -74,7 +73,6 @@ void init(){
 //	initPITTimer();         	/* TODO ditto... */
 	initSCIStuff();         	/* Setup the sci module(s) that we will use. */
 	initConfiguration();    	/* TODO Set user/feature/config up here! */
-	initXgate();
 	initInterrupts();       	/* still last, reset timers, enable interrupts here TODO move this to inside config in an organised way. Set up the rest of the individual interrupts */
 	ATOMIC_END();           	/* Re-enable any configured interrupts */
 }
@@ -510,74 +508,6 @@ void initFlash(){
 	FCLKDIV = 0x4A;                  	/* Set the flash clock frequency	*/
 	FPROT = 0xFF;                    	/* Disable all flash protection 	*/
 	FSTAT = FSTAT | (PVIOL | ACCERR);	/* Clear any errors             	*/
-}
-
-/** @brief Xgate module setup
- *
- * Configure XGATE setup registers and prepare XGATE code to be run by copying
- * it from flash hcs12mem can write to to flash XGATE can read from.
- *
- * @author Sean Keys and Fred Cooke
- *
- * @note A thanks goes out to Edward Karpicz for helping me get xgate configured
- * properly.
- *
- * @warning If executing from RAM you must copy the code from Flash to RAM before
- * starting Xgate
- *
- */
-void initXgate(){
-	/* route interrupt to xgate */
-	INT_CFADDR = (0x72 & 0xF0);	/* vector address = channel_id * 2 */
-	INT_CFDATA0 = 0x01; 		/* RQST = 1 */
-	INT_CFDATA1 = 0x81;		/* PRIO = 1 */
-
-	/* HCS12mem currently limits us to half of the available flash, hence this copy code. */
-	/* XGATE sees flash starting at paged address 0xE0, 0x8800 */
-
-	// Reuse variables across multiple blocks of unreachable code copying code
-	unsigned short * xgateDataDestination;
-	unsigned char destinationPage;
-	// Save old flash page value
-	unsigned char OldPPAGE = PPAGE;
-
-	// Copy the XGATE vector table into the visible region only if it differs from what is already there (save on flash burns for now)
-	xgateDataDestination = (unsigned short *)0x8800;
-	destinationPage = 0xE0;
-	// Copy to RAM first as only one paged flash block at a time is visible
-	memcpy((void*)&TXBuffer, (void*)&xgateIntVectorTable, sizeof(xgateIntVectorTable));
-	// Switch to destination page for comparison
-	PPAGE = destinationPage;
-	// Do the check, from the copy in RAM to the destination.
-	if(compare((unsigned char*)&TXBuffer, (unsigned char*)xgateDataDestination, sizeof(xgateIntVectorTable))){
-		eraseSector(destinationPage, xgateDataDestination);
-		writeSector(RPAGE, (unsigned short*)&TXBuffer, destinationPage, xgateDataDestination);
-	}
-
-	// Copy xgatethread0 code into the visible region only if it differs from what is already there (save on flash burns for now)
-	xgateDataDestination = (unsigned short *)0x9000;
-	destinationPage = 0xE1;
-	unsigned short xgateThread0Size = (void*)&xgateThread0End - (void*)&xgateThread0;
-	// Copy to RAM first as only one paged flash block at a time is visible
-	memcpy((void*)&TXBuffer, (void*)&xgateThread0, xgateThread0Size);
-	// Switch to destination page for comparison
-	PPAGE = destinationPage;
-	// Do the check, from the copy in RAM to the destination.
-	if(compare((unsigned char*)&TXBuffer, (unsigned char*)xgateDataDestination, xgateThread0Size)){
-		eraseSector(destinationPage, xgateDataDestination);
-		writeSector(RPAGE, (unsigned short*)&TXBuffer, destinationPage, xgateDataDestination);
-	}
-
-	// Switch the page back to how it was
-	PPAGE = OldPPAGE;
-
-	// XGATE threads execute from flash at the moment
-
-	// Set the XGVBR register to its start address in flash (page 0xE0 after 2K register space)
-	XGVBR = (unsigned short )0x0800;
-
-	// Enable XGate and XGate interrupts
-	XGMCTL= (unsigned short)0x8181;
 }
 
 /* Set up the timer module and its various interrupts */

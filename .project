@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>freeems-vanilla</name>
-	<comment>The main FreeEMS Vanilla firmware source project.</comment>
+	<name>FreeMS2</name>
+	<comment>The FreeMS2 firmware source project.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

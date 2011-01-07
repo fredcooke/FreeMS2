@@ -1,26 +1,26 @@
-/* FreeEMS - the open source engine management system
+/* FreeMS2 - the open source engine management system
  *
  * Copyright 2008, 2009 Fred Cooke
  *
- * This file is part of the FreeEMS project.
+ * This file is part of the FreeMS2 project.
  *
- * FreeEMS software is free software: you can redistribute it and/or modify
+ * FreeMS2 software is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * FreeEMS software is distributed in the hope that it will be useful,
+ * FreeMS2 software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with any FreeEMS software.  If not, see http://www.gnu.org/licenses/
+ * along with any FreeMS2 software.  If not, see http://www.gnu.org/licenses/
  *
  * We ask that if you make any changes to this file you email them upstream to
  * us at admin(at)diyefi(dot)org or, even better, fork the code on github.com!
  *
- * Thank you for choosing FreeEMS to run your engine!
+ * Thank you for choosing FreeMS2 to run your engine!
  */
 
 
@@ -370,7 +370,7 @@
 #define ATD1DR7 DVUSP(ATD1_BASE + 0xE) /* 16 bit (0x009E ATD1DR7H, 0x009F ATD1DR7L) */ /* SpareADC (NC)		*/
 
 
-/* NOT bonded on the 112 pin package!! Left here in case of 144 pin FreeEMS later on. */
+/* NOT bonded on the 112 pin package!! Left here in case of 144 pin FreeMS2 later on. */
 //0x00A0 ATD1DR8H
 //0x00A1 ATD1DR8L
 //0x00A2 ATD1DR9H
@@ -387,7 +387,7 @@
 //0x00AD ATD1DR14L
 //0x00AE ATD1DR15H
 //0x00AF ATD1DR15L
-/* NOT bonded on the 112 pin package!! Left here in case of 144 pin FreeEMS later on. */
+/* NOT bonded on the 112 pin package!! Left here in case of 144 pin FreeMS2 later on. */
 
 
 /* IIC1 - Inter Intergrated Circuit interface 1 TODO configure and use */

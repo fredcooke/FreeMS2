@@ -1,26 +1,26 @@
-/* FreeEMS - the open source engine management system
+/* FreeMS2 - the open source engine management system
  *
  * Copyright 2008, 2009, 2010 Fred Cooke
  *
- * This file is part of the FreeEMS project.
+ * This file is part of the FreeMS2 project.
  *
- * FreeEMS software is free software: you can redistribute it and/or modify
+ * FreeMS2 software is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * FreeEMS software is distributed in the hope that it will be useful,
+ * FreeMS2 software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with any FreeEMS software.  If not, see http://www.gnu.org/licenses/
+ * along with any FreeMS2 software.  If not, see http://www.gnu.org/licenses/
  *
  * We ask that if you make any changes to this file you email them upstream to
  * us at admin(at)diyefi(dot)org or, even better, fork the code on github.com!
  *
- * Thank you for choosing FreeEMS to run your engine!
+ * Thank you for choosing FreeMS2 to run your engine!
  */
 
 
@@ -37,7 +37,7 @@
 
 #define GLOBAL_CONSTANTS_C
 #define NO_CONST_ARRAYS
-#include "inc/freeEMS.h"
+#include "inc/FreeMS2.h"
 
 
 /* Types summary
@@ -68,13 +68,13 @@ const unsigned short maxBasicDatalogLength = sizeof(CoreVar) + sizeof(DerivedVar
  * This field consists of 3 chars for a 3 part version number and a free form string. For any unique string the version
  * number is also unique. In this way tools can easily support a range of versions for a specific unique string ID
  */
-const unsigned char interfaceVersionAndType[20] = {0,0,0,'I','F','r','e','e','E','M','S',' ','V','a','n','i','l','l','a',0};
+const unsigned char interfaceVersionAndType[20] = {0,0,0,'I','F','r','e','e','M','S','2',0};
 
 /** Displayable firmware version identifier
  *
  * This should change every time the code is changed at all (even a little) before each release.
  */
-const unsigned char firmwareVersion[31] = {"FreeEMS Vanilla 0.1.2 SNAPSHOT"};
+const unsigned char firmwareVersion[31] = {"FreeMS2 0.0.1 SNAPSHOT"};
 
 /** Divisors and untunable physical constants combined into a single master fuel constant
  *
