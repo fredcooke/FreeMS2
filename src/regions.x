@@ -30,7 +30,7 @@
  * Code section to memory region mapping definition file for inclusion
  * into the linker script. This file provides rules which map pieces of
  * code and data from named sections into specific named memory regions.
- * See memory.x and hc9s12xdp512elfb.x for more information.
+ * See memory.x and hc9s12c128elfb.x for more information.
  *
  * A description of what some of this means can be found at the following URLs:
  * - http://www.gnu.org/software/m68hc11/m68hc11_binutils.html
@@ -49,22 +49,10 @@ SECTIONS
 /* can be found in the main linker script   */
 
 /* The RAM page window through which all tunable config is reached. */
-  .rpage :
+  .data :
   {
-    *(.rpage)
-  } > rpage
-
-/* Comms transmission buffer */
-  .txbuf :
-  {
-    *(.txbuf)
-  } > txbuf
-
-/* Comms reception buffer */
-  .rxbuf :
-  {
-    *(.rxbuf)
-  } > rxbuf
+    *(.data)
+  } > data
 
 
 /*&&&&&&&&&&&&&& Linear Flash Regions &&&&&&&&&&&&&&*/
@@ -100,230 +88,73 @@ SECTIONS
 
 /*&&&&&&&&&&&&&& Paged Flash Regions &&&&&&&&&&&&&&*/
 
-/* PPAGE FA is used for fuel tables and setup function */
-  .dpageFA  :
+/* PPAGE 3A is used for fuel tables and setup function */
+  .dpage3A  :
   {
-    *(.dpageFA)
-  }  > dpageFA
+    *(.dpage3A)
+  }  > dpage3A
 
-  .fpageFA  :
+  .fpage3A  :
   {
-    *(.fpageFA)
-  }  > fpageFA
+    *(.fpage3A)
+  }  > fpage3A
 
-/* PPAGE FB is used for smaller tunables and setup function */
-  .fpageFB  :
+/* PPAGE 3B is used for smaller tunables and setup function */
+  .fpage3B  :
   {
-    *(.fpageFB)
-  }  > fpageFB
+    *(.fpage3B)
+  }  > fpage3B
 
 /* Data split up into eight chunks to catch size mistakes better */
-  .dpageFB1 :
+  .dpage3B :
   {
-    *(.dpageFB1)
-  }  > dpageFB1
+    *(.dpage3B)
+  }  > dpage3B
 
-  .dpageFB2  :
+/* PPAGE 3C is used for timing tables and setup function */
+  .dpage3C  :
   {
-    *(.dpageFB2)
-  }  > dpageFB2
+    *(.dpage3C)
+  }  > dpage3C
 
-  .dpageFB3  :
+  .fpage3C  :
   {
-    *(.dpageFB3)
-  }  > dpageFB3
-
-  .dpageFB4  :
-  {
-    *(.dpageFB4)
-  }  > dpageFB4
-
-  .dpageFB5  :
-  {
-    *(.dpageFB5)
-  }  > dpageFB5
-
-  .dpageFB6  :
-  {
-    *(.dpageFB6)
-  }  > dpageFB6
-
-  .dpageFB7  :
-  {
-    *(.dpageFB7)
-  }  > dpageFB7
-
-  .dpageFB8  :
-  {
-    *(.dpageFB8)
-  }  > dpageFB8
-
-/* PPAGE FC is used for timing tables and setup function */
-  .dpageFC  :
-  {
-    *(.dpageFC)
-  }  > dpageFC
-
-  .fpageFC  :
-  {
-    *(.fpageFC)
-  }  > fpageFC
+    *(.fpage3C)
+  }  > fpage3C
 
 /* The rest from this 128k flash module for general code */
-  .ppageF8  :
+  .ppage38  :
   {
-    *(.fpageF8)
-    *(.dpageF8)
-  }  > ppageF8
+    *(.fpage38)
+    *(.dpage38)
+  }  > ppage38
 
-  .fpageF9  :
+  .fpage39  :
   {
-    *(.fpageF9)
-  }  > fpageF9
+    *(.fpage39)
+  }  > fpage39
 
-  .dpageF9  :
+  .dpage39  :
   {
-    *(.dpageF9)
-  }  > dpageF9
+    *(.dpage39)
+  }  > dpage39
 
-  .ppageFE  :
+  .ppage3E  :
   {
-    *(.ppageFE)
-  }  > ppageFE
+    *(.ppage3E)
+  }  > ppage3E
 
 /* The following two blocks are included just for clarity */
 /* and are the same as text1 and text when paged.         */
-/*  .ppageFD  : (text1 / 0x4000 - 0x7FFF)
+/*  .ppage3D  : (text1 / 0x4000 - 0x7FFF)
   {
-    *(.ppageFD)
-  }  > ppageFD
+    *(.ppage3D)
+  }  > ppage3D
 
-  .ppageFF  : (text / 0xC000 - 0xFFFF)
+  .ppage3F  : (text / 0xC000 - 0xFFFF)
   {
-    *(.ppageFF)
-  } > ppageFF */
-
-
-/* The rest from the other 3 128k flash modules - can't use yet */
-  .ppageE0  :
-  {
-    *(.ppageE0)
-  }  > ppageE0
-
-  .ppageE1  :
-  {
-    *(.ppageE1)
-  }  > ppageE1
-
-  .ppageE2  :
-  {
-    *(.ppageE2)
-  }  > ppageE2
-
-  .ppageE3  :
-  {
-    *(.ppageE3)
-  }  > ppageE3
-
-  .ppageE4  :
-  {
-    *(.ppageE4)
-  }  > ppageE4
-
-  .ppageE5  :
-  {
-    *(.ppageE5)
-  }  > ppageE5
-
-  .ppageE6  :
-  {
-    *(.ppageE6)
-  }  > ppageE6
-
-  .ppageE7  :
-  {
-    *(.ppageE7)
-  }  > ppageE7
-
-  .ppageE8  :
-  {
-    *(.ppageE8)
-  }  > ppageE8
-
-  .ppageE9  :
-  {
-    *(.ppageE9)
-  }  > ppageE9
-
-  .ppageEA  :
-  {
-    *(.ppageEA)
-  }  > ppageEA
-
-  .ppageEB  :
-  {
-    *(.ppageEB)
-  }  > ppageEB
-
-  .ppageEC  :
-  {
-    *(.ppageEC)
-  }  > ppageEC
-
-  .ppageED  :
-  {
-    *(.ppageED)
-  }  > ppageED
-
-  .ppageEE  :
-  {
-    *(.ppageEE)
-  }  > ppageEE
-
-  .ppageEF  :
-  {
-    *(.ppageEF)
-  }  > ppageEF
-
-  .ppageF0  :
-  {
-    *(.ppageF0)
-  }  > ppageF0
-
-  .ppageF1  :
-  {
-    *(.ppageF1)
-  }  > ppageF1
-
-  .ppageF2  :
-  {
-    *(.ppageF2)
-  }  > ppageF2
-
-  .ppageF3  :
-  {
-    *(.ppageF3)
-  }  > ppageF3
-
-  .ppageF4  :
-  {
-    *(.ppageF4)
-  }  > ppageF4
-
-  .ppageF5  :
-  {
-    *(.ppageF5)
-  }  > ppageF5
-
-  .ppageF6  :
-  {
-    *(.ppageF6)
-  }  > ppageF6
-
-  .ppageF7  :
-  {
-    *(.ppageF7)
-  }  > ppageF7
+    *(.ppage3F)
+  } > ppage3F */
 }
 
 

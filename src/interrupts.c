@@ -46,46 +46,6 @@
 /* jumps to the offset location by the serial monitor starting at 0xF700 and ending at 0xF800		*/
 /* http://m68hc11.serveftp.org/wiki/index.php/FAQ:Interrupts										*/
 const interruptTable _vectors[] VECTORS = {
-/* 0xFF00 to 0xFF0F */
-/*	The first row are NOT actually interrupts at all, just a wasted 16 bytes for tidiness */
-/*	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,		*/
-/*	Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF10 to 0xFF1F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	Spurious		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF20 to 0xFF2F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF30 to 0xFF3F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF40 to 0xFF4F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF50 to 0xFF5F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved		Reserved	*/
-/*																																*/
-
-/* 0xFF60 to 0xFF6F */
-	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,
-/*	RAM violation	XGATEsoft error	XGATE 7			XGATE 6			XGATE 5			XGATE 4			XGATE 3			XGATE 2		*/
-/*																																*/
-
-/* 0xFF70 to 0xFF7F */
-	UISR,			UISR,			StagedOffISR,	StagedOnISR,	IgnitionFireISR,IgnitionDwellISR,UISR,			UISR,//VRegAPIISR,
-/*	XGATE 1			XGATE 0			PIT 3			PIT 2			PIT 1			PIT 0			Reserved		API			*/
-/*																	Fire Coil		Dwell Coil									*/
 
 /* 0xFF80 to 0xFF8F */
 	LowVoltageISR,	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			PortPISR,

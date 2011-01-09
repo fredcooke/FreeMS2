@@ -50,91 +50,91 @@
  *
  * @author Fred Cooke
  */
-void generateDerivedVars(){
-	/*&&&&&&&&&&&&&&&&&&&& Use basic variables to lookup and calculate derived variables &&&&&&&&&&&&&&&&&&&*/
-
-
-	/* Determine load based on options */
-	if(TRUE){ /* Use MAP as load */
-		DerivedVars->LoadMain = CoreVars->MAP;
-	}else if(FALSE){ /* Use TPS as load */
-		DerivedVars->LoadMain = CoreVars->TPS;
-	}else if(FALSE){ /* Use AAP corrected MAP as load */
-		DerivedVars->LoadMain = ((unsigned long)CoreVars->MAP * CoreVars->AAP) / seaLevelKPa;
-	}else{ /* Default to MAP, but throw error */
-		DerivedVars->LoadMain = CoreVars->MAP;
-		/* If anyone is listening, let them know something is wrong */
-		sendErrorIfClear(LOAD_NOT_CONFIGURED_CODE); // or maybe queue it?
-	}
-
-
-	/* Look up VE with RPM and Load */
-	DerivedVars->VEMain = lookupPagedMainTableCellValue((mainTable*)&TablesA.VETableMain, CoreVars->RPM, DerivedVars->LoadMain, currentFuelRPage);
-
-
-	/* Look up target Lambda with RPM and Load */
-	DerivedVars->Lambda = lookupPagedMainTableCellValue((mainTable*)&TablesD.LambdaTable, CoreVars->RPM, DerivedVars->LoadMain, currentFuelRPage);
-
-
-	/* Look up injector dead time with battery voltage */
-	DerivedVars->IDT = lookupTwoDTableUS((twoDTableUS*)&TablesA.SmallTablesA.injectorDeadTimeTable, CoreVars->BRV);
-
-
-	/* Look up the engine temperature enrichment percentage with temperature */
-	DerivedVars->ETE = lookupTwoDTableUS((twoDTableUS*)&TablesA.SmallTablesA.engineTempEnrichmentTablePercent, CoreVars->CHT);
-	/* TODO The above needs some careful thought put into it around different loads and correction effects. */
-
-
-	/* Calculate the Transient Fuel Correction */
-	if(TRUE /*WWTFC*/){ /* Do ONLY WW correction if enabled */
-		// Do ww stuff, maybe pre done via RTC/RTI for consistent period?
-		DerivedVars->TFCTotal = 0; /* TODO replace with real code */
-	}else if(FALSE /*STDTFC*/){ /* Do any combination of standard approximate methods */
-		/* Initialse the variable as a base */
-		DerivedVars->TFCTotal = 0;
-		/* Based on the rate of change of MAP and some history/taper time */
-		if(FALSE /*MAPTFC*/){
-			// Do MAP based
-			DerivedVars->TFCTotal += 0;
-		}
-
-		/* Based on the rate of change of TPS and some history/taper time */
-		if(FALSE /*TPSTFC*/){
-			// Do TPS based
-			DerivedVars->TFCTotal += 0;
-		}
-
-		/* Based on the rate of change of RPM and some history/taper time */
-		if(FALSE /*RPMTFC*/){
-			// Do RPM based
-			DerivedVars->TFCTotal += 0;
-		}
-	}else{ /* Default to no correction */
-		DerivedVars->TFCTotal = 0;
-		/* Don't throw error as correction may not be required */
-	}
-
-	// debug
-
-	LongTime breakout2, breakout4;
-//	breakout.timeLong = timeBetweenSuccessivePrimaryPulsesBuffer;
-	breakout2.timeLong = timeBetweenSuccessivePrimaryPulses;
-//	breakout3.timeLong = lengthOfSecondaryHighPulses;
-	breakout4.timeLong = lengthOfSecondaryLowPulses;
-
-//	DerivedVars->sp1 = Counters.primaryTeethSeen;
-//	DerivedVars->sp2 = Counters.secondaryTeethSeen;
-
-//	DerivedVars->sp3 = breakout4.timeShorts[0];
-	DerivedVars->sp1 = breakout4.timeShorts[1];
-
-//	DerivedVars->TFCTotal = *RPMRecord;
-
-//	CoreVars->DMAP = breakout3.timeShorts[0];
-//	CoreVars->DTPS = breakout3.timeShorts[1];
-
-	CoreVars->DRPM = breakout2.timeShorts[0];
-	CoreVars->DDRPM = breakout2.timeShorts[1];
-
-	/*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
-}
+//void generateDerivedVars(){
+//	/*&&&&&&&&&&&&&&&&&&&& Use basic variables to lookup and calculate derived variables &&&&&&&&&&&&&&&&&&&*/
+//
+//
+//	/* Determine load based on options */
+//	if(TRUE){ /* Use MAP as load */
+//		DerivedVars->LoadMain = CoreVars->MAP;
+//	}else if(FALSE){ /* Use TPS as load */
+//		DerivedVars->LoadMain = CoreVars->TPS;
+//	}else if(FALSE){ /* Use AAP corrected MAP as load */
+//		DerivedVars->LoadMain = ((unsigned long)CoreVars->MAP * CoreVars->AAP) / seaLevelKPa;
+//	}else{ /* Default to MAP, but throw error */
+//		DerivedVars->LoadMain = CoreVars->MAP;
+//		/* If anyone is listening, let them know something is wrong */
+//		sendErrorIfClear(LOAD_NOT_CONFIGURED_CODE); // or maybe queue it?
+//	}
+//
+//
+//	/* Look up VE with RPM and Load */
+//	DerivedVars->VEMain = lookupPagedMainTableCellValue((mainTable*)&TablesA.VETableMain, CoreVars->RPM, DerivedVars->LoadMain, currentFuelRPage);
+//
+//
+//	/* Look up target Lambda with RPM and Load */
+//	DerivedVars->Lambda = lookupPagedMainTableCellValue((mainTable*)&TablesD.LambdaTable, CoreVars->RPM, DerivedVars->LoadMain, currentFuelRPage);
+//
+//
+//	/* Look up injector dead time with battery voltage */
+//	DerivedVars->IDT = lookupTwoDTableUS((twoDTableUS*)&TablesA.SmallTablesA.injectorDeadTimeTable, CoreVars->BRV);
+//
+//
+//	/* Look up the engine temperature enrichment percentage with temperature */
+//	DerivedVars->ETE = lookupTwoDTableUS((twoDTableUS*)&TablesA.SmallTablesA.engineTempEnrichmentTablePercent, CoreVars->CHT);
+//	/* TODO The above needs some careful thought put into it around different loads and correction effects. */
+//
+//
+//	/* Calculate the Transient Fuel Correction */
+//	if(TRUE /*WWTFC*/){ /* Do ONLY WW correction if enabled */
+//		// Do ww stuff, maybe pre done via RTC/RTI for consistent period?
+//		DerivedVars->TFCTotal = 0; /* TODO replace with real code */
+//	}else if(FALSE /*STDTFC*/){ /* Do any combination of standard approximate methods */
+//		/* Initialse the variable as a base */
+//		DerivedVars->TFCTotal = 0;
+//		/* Based on the rate of change of MAP and some history/taper time */
+//		if(FALSE /*MAPTFC*/){
+//			// Do MAP based
+//			DerivedVars->TFCTotal += 0;
+//		}
+//
+//		/* Based on the rate of change of TPS and some history/taper time */
+//		if(FALSE /*TPSTFC*/){
+//			// Do TPS based
+//			DerivedVars->TFCTotal += 0;
+//		}
+//
+//		/* Based on the rate of change of RPM and some history/taper time */
+//		if(FALSE /*RPMTFC*/){
+//			// Do RPM based
+//			DerivedVars->TFCTotal += 0;
+//		}
+//	}else{ /* Default to no correction */
+//		DerivedVars->TFCTotal = 0;
+//		/* Don't throw error as correction may not be required */
+//	}
+//
+//	// debug
+//
+//	LongTime breakout2, breakout4;
+////	breakout.timeLong = timeBetweenSuccessivePrimaryPulsesBuffer;
+//	breakout2.timeLong = timeBetweenSuccessivePrimaryPulses;
+////	breakout3.timeLong = lengthOfSecondaryHighPulses;
+//	breakout4.timeLong = lengthOfSecondaryLowPulses;
+//
+////	DerivedVars->sp1 = Counters.primaryTeethSeen;
+////	DerivedVars->sp2 = Counters.secondaryTeethSeen;
+//
+////	DerivedVars->sp3 = breakout4.timeShorts[0];
+//	DerivedVars->sp1 = breakout4.timeShorts[1];
+//
+////	DerivedVars->TFCTotal = *RPMRecord;
+//
+////	CoreVars->DMAP = breakout3.timeShorts[0];
+////	CoreVars->DTPS = breakout3.timeShorts[1];
+//
+//	CoreVars->DRPM = breakout2.timeShorts[0];
+//	CoreVars->DDRPM = breakout2.timeShorts[1];
+//
+//	/*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+//}

@@ -46,7 +46,7 @@
 #include "inc/FreeMS2.h"
 
 
-const volatile SmallTables1 SmallTablesAFlash2 TUNETABLESD5 = {
+const volatile SmallTables1 SmallTablesAFlash2 TUNETABLESD = {
 		{ARRAY_OF_16_VOLTAGES, ARRAY_OF_16_DWELLS},   	/* dwellDesiredVersusVoltageTable */
 		{ARRAY_OF_16_VOLTAGES, ARRAY_OF_16_DEADTIMES},	/* injectorDeadTimeTable */
 		{ARRAY_OF_16_ZEROS, ARRAY_OF_16_ZEROS},       	/* postStartEnrichmentTable */
@@ -66,7 +66,7 @@ const volatile SmallTables1 SmallTablesAFlash2 TUNETABLESD5 = {
 };
 
 
-const volatile SmallTables2 SmallTablesBFlash2 TUNETABLESD6 = {
+const volatile SmallTables2 SmallTablesBFlash2 TUNETABLESD = {
 		asyncDatalogBasic,
 		ARRAY_OF_6_FUEL_TRIMS,	/* perCylinderFuelTrims[] */
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -88,7 +88,7 @@ const volatile SmallTables2 SmallTablesBFlash2 TUNETABLESD6 = {
 };
 
 
-const volatile SmallTables3 SmallTablesCFlash2 TUNETABLESD7 = {
+const volatile SmallTables3 SmallTablesCFlash2 TUNETABLESD = {
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -108,7 +108,7 @@ const volatile SmallTables3 SmallTablesCFlash2 TUNETABLESD7 = {
 };
 
 
-const volatile SmallTables4 SmallTablesDFlash2 TUNETABLESD8 = {
+const volatile SmallTables4 SmallTablesDFlash2 TUNETABLESD = {
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

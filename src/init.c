@@ -70,7 +70,6 @@ void init(){
 	initVariables();        	/* Initialise the rest of the running variables etc */
 	initFlash();            	/* TODO, finalise this */
 	initECTTimer();         	/* TODO move this to inside config in an organised way. Set up the timer module and its various aspects */
-//	initPITTimer();         	/* TODO ditto... */
 	initSCIStuff();         	/* Setup the sci module(s) that we will use. */
 	initConfiguration();    	/* TODO Set user/feature/config up here! */
 	initInterrupts();       	/* still last, reset timers, enable interrupts here TODO move this to inside config in an organised way. Set up the rest of the individual interrupts */
@@ -253,19 +252,19 @@ void initFuelAddresses(){
  *
  * @author Fred Cooke
  */
-void initPagedRAMFuel(void){
-	/* Copy the tables from flash to RAM */
-	RPAGE = RPAGE_FUEL_ONE;
-	memcpy((void*)&TablesA,	VETableMainFlashLocation,		MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	VETableSecondaryFlashLocation,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	VETableTertiaryFlashLocation,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	LambdaTableFlashLocation,		MAINTABLE_SIZE);
-	RPAGE = RPAGE_FUEL_TWO;
-	memcpy((void*)&TablesA,	VETableMainFlash2Location,		MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	VETableSecondaryFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	VETableTertiaryFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	LambdaTableFlash2Location,		MAINTABLE_SIZE);
-}
+//void initPagedRAMFuel(void){
+//	/* Copy the tables from flash to RAM */
+//	RPAGE = RPAGE_FUEL_ONE;
+//	memcpy((void*)&TablesA,	VETableMainFlashLocation,		MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	VETableSecondaryFlashLocation,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	VETableTertiaryFlashLocation,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	LambdaTableFlashLocation,		MAINTABLE_SIZE);
+//	RPAGE = RPAGE_FUEL_TWO;
+//	memcpy((void*)&TablesA,	VETableMainFlash2Location,		MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	VETableSecondaryFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	VETableTertiaryFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	LambdaTableFlash2Location,		MAINTABLE_SIZE);
+//}
 
 
 /** @brief Buffer timing tables addresses
@@ -295,19 +294,19 @@ void initTimingAddresses(){
  *
  * @author Fred Cooke
  */
-void initPagedRAMTime(){
-	/* Copy the tables from flash to RAM */
-	RPAGE = RPAGE_TIME_ONE;
-	memcpy((void*)&TablesA,	IgnitionAdvanceTableMainFlashLocation,			MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	IgnitionAdvanceTableSecondaryFlashLocation,		MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	InjectionAdvanceTableMainFlashLocation,			MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	InjectionAdvanceTableSecondaryFlashLocation,	MAINTABLE_SIZE);
-	RPAGE = RPAGE_TIME_TWO;
-	memcpy((void*)&TablesA,	IgnitionAdvanceTableMainFlash2Location,			MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	IgnitionAdvanceTableSecondaryFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	InjectionAdvanceTableMainFlash2Location,		MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	InjectionAdvanceTableSecondaryFlash2Location,	MAINTABLE_SIZE);
-}
+//void initPagedRAMTime(){
+//	/* Copy the tables from flash to RAM */
+//	RPAGE = RPAGE_TIME_ONE;
+//	memcpy((void*)&TablesA,	IgnitionAdvanceTableMainFlashLocation,			MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	IgnitionAdvanceTableSecondaryFlashLocation,		MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	InjectionAdvanceTableMainFlashLocation,			MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	InjectionAdvanceTableSecondaryFlashLocation,	MAINTABLE_SIZE);
+//	RPAGE = RPAGE_TIME_TWO;
+//	memcpy((void*)&TablesA,	IgnitionAdvanceTableMainFlash2Location,			MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	IgnitionAdvanceTableSecondaryFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	InjectionAdvanceTableMainFlash2Location,		MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	InjectionAdvanceTableSecondaryFlash2Location,	MAINTABLE_SIZE);
+//}
 
 
 /** @brief Buffer tunable tables addresses
@@ -371,19 +370,19 @@ void initTunableAddresses(){
 /**
  *
  */
-void initPagedRAMTune(){
-	/* Copy the tables from flash to RAM */
-	RPAGE = RPAGE_TUNE_ONE;
-	memcpy((void*)&TablesA,	SmallTablesAFlashLocation,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	SmallTablesBFlashLocation,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	SmallTablesCFlashLocation,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	SmallTablesDFlashLocation,	MAINTABLE_SIZE);
-	RPAGE = RPAGE_TUNE_TWO;
-	memcpy((void*)&TablesA,	SmallTablesAFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesB,	SmallTablesBFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesC,	SmallTablesCFlash2Location,	MAINTABLE_SIZE);
-	memcpy((void*)&TablesD,	SmallTablesDFlash2Location,	MAINTABLE_SIZE);
-}
+//void initPagedRAMTune(){
+//	/* Copy the tables from flash to RAM */
+//	RPAGE = RPAGE_TUNE_ONE;
+//	memcpy((void*)&TablesA,	SmallTablesAFlashLocation,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	SmallTablesBFlashLocation,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	SmallTablesCFlashLocation,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	SmallTablesDFlashLocation,	MAINTABLE_SIZE);
+//	RPAGE = RPAGE_TUNE_TWO;
+//	memcpy((void*)&TablesA,	SmallTablesAFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesB,	SmallTablesBFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesC,	SmallTablesCFlash2Location,	MAINTABLE_SIZE);
+//	memcpy((void*)&TablesD,	SmallTablesDFlash2Location,	MAINTABLE_SIZE);
+//}
 
 
 /** @brief Buffer addresses of paged data
@@ -426,9 +425,9 @@ void initAllPagedRAM(){
 	initAllPagedAddresses();
 
 	/* Copy the tables up to their paged RAM blocks through the window from flash */
-	initPagedRAMFuel();
-	initPagedRAMTime();
-	initPagedRAMTune();
+//	initPagedRAMFuel();
+//	initPagedRAMTime();
+//	initPagedRAMTune();
 
 	/* Default to page one for now, perhaps read the configured port straight out of reset in future? TODO */
 	setupPagedRAM(TRUE); // probably something like (PORTA & TableSwitchingMask)
@@ -553,28 +552,6 @@ void initECTTimer(){
 #endif
 }
 
-
-/* Configure the PIT timers for their various uses. */
-void initPITTimer(){
-#ifndef NO_INIT
-	/*  */
-	// set micro periods
-	PITMTLD0 = 0x1F; /* 32 prescaler gives 0.8uS resolution and max period of 52.4288ms measured */
-	PITMTLD1 = 0x1F; /* ditto */
-	/* http://www.google.com/search?hl=en&safe=off&q=1+%2F+%2840MHz+%2F+32+%29 Exactly the same as for ECT */
-
-	// set timers running
-//	PITLD0 = dwellPeriod;
-	// enable module
-	PITCFLMT = 0x80;
-	// enable channels
-	//PITCE = 0x03;
-	// enable interrupt
-//	PITINTE = 0x01;
-	// clear flags
-	//PITFLT = ONES;
-#endif
-}
 
 /* Setup the sci module(s) that we need to use. */
 void initSCIStuff(){

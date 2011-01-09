@@ -46,45 +46,6 @@
 #include "inc/injectionISRs.h"
 
 
-/* Staged control algorithms for PIT2 and PIT3 */
-/* Staged injection switch on timer */
-void StagedOnISR(void){
-	// clear the flag
-	PITINTE |= 0x04;
-
-	// bit bang on the correct injector channel
-	// TODO figure out which channel and switch it
-	// TODO set the flag for that channel
-
-	// if there are other staged channels pending, schedule them and adjust the data
-	// TODO
-
-	/* If staged injection needs the end point scheduled, do it now (otherwise it will turn off naturally with the main injector) */
-	if(!(fixedConfigs1.coreSettingsA & STAGED_END)){
-		// TODO schedule the end of staged injection with PIT 3
-	}
-
-	/* Clear the PIT2 flag */
-	// TODO
-}
-
-/* Staged injection switch off timer */
-void StagedOffISR(void){
-	// clear the flag
-	PITINTE |= 0x08;
-
-	// bit bang off the correct injector channel
-	// TODO figure out which channel and switch it
-	// TODO set the flag for that channel
-
-	// if there are other staged channels pending, schedule them and adjust the data
-	// TODO
-
-	/* Clear the PIT3 flag */
-	// TODO
-}
-
-
 /* Define the variables correctly for each channel then import the code */
 
 /* Channel 1 */

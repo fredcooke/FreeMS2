@@ -234,12 +234,12 @@ typedef union {
 
 
 /* Large blocks */
-EXTERN unsigned char TXBuffer[TX_BUFFER_SIZE] TXBUF;
-EXTERN unsigned char RXBuffer[RX_BUFFER_SIZE] RXBUF;
-EXTERN Tables1 TablesA RWINDOW;
-EXTERN Tables2 TablesB RWINDOW;
-EXTERN Tables3 TablesC RWINDOW;
-EXTERN Tables4 TablesD RWINDOW;
+//EXTERN unsigned char TXBuffer[TX_BUFFER_SIZE] RAMR;
+//EXTERN unsigned char RXBuffer[RX_BUFFER_SIZE] RAMR;
+//EXTERN Tables1 TablesA RAMR;
+//EXTERN Tables2 TablesB RAMR;
+//EXTERN Tables3 TablesC RAMR;
+//EXTERN Tables4 TablesD RAMR;
 
 
 /* RAM page variables */

@@ -130,13 +130,13 @@ int  main(){ // TODO maybe move this to paged flash ?
 			unsigned short derivedStartTime = TCNT;
 
 			/* Generate the derived variables from the core variables based on settings */
-			generateDerivedVars();
+			//generateDerivedVars();
 
 			RuntimeVars.genDerivedVarsRuntime = TCNT - derivedStartTime;
 			unsigned short calcsStartTime = TCNT;
 
 			/* Perform the calculations TODO possibly move this to the software interrupt if it makes sense to do so */
-			calculateFuelAndIgnition();
+			//calculateFuelAndIgnition();
 
 			RuntimeVars.calcsRuntime = TCNT - calcsStartTime;
 			/* Record the runtime of all the math total */
@@ -179,76 +179,76 @@ int  main(){ // TODO maybe move this to paged flash ?
 				RXStateFlags &= RX_CLEAR_READY_TO_PROCESS;
 
 				/* Handle the incoming packet */
-				decodePacketAndRespond();
+				//decodePacketAndRespond();
 			}else if(lastCalcCount != Counters.calculationsPerformed){ // substitute true for full speed continuous stream test...
 
 				/* send asynchronous data log if required */
-				switch (TablesB.SmallTablesB.datalogStreamType) {
-					case asyncDatalogOff:
-					{
-						break;
-					}
-					case asyncDatalogBasic:
-					{
-						/* Flag that we are transmitting! */
-						TXBufferInUseFlags |= COM_SET_SCI0_INTERFACE_ID;
-						// SCI0 only for now...
-
-						// headers including length...						*length = configuredBasicDatalogLength;
-						TXBufferCurrentPositionHandler = (unsigned char*)&TXBuffer;
-
-						/* Initialised here such that override is possible */
-						TXBufferCurrentPositionSCI0 = (unsigned char*)&TXBuffer;
-						TXBufferCurrentPositionCAN0 = (unsigned char*)&TXBuffer;
-
-						/* Set the flags : firmware, no ack, no addrs, has length */
-						*TXBufferCurrentPositionHandler = HEADER_HAS_LENGTH;
-						TXBufferCurrentPositionHandler++;
-
-						/* Set the payload ID */
-						*((unsigned short*)TXBufferCurrentPositionHandler) = responseBasicDatalog;
-						TXBufferCurrentPositionHandler += 2;
-
-						/* Set the length */
-						*((unsigned short*)TXBufferCurrentPositionHandler) = configuredBasicDatalogLength;
-						TXBufferCurrentPositionHandler += 2;
-
-						/* populate data log */
-						populateBasicDatalog();
-						finaliseAndSend(0);
-						break;
-					}
-					case asyncDatalogConfig:
-					{
-						/// TODO @todo
-						break;
-					}
-					case asyncDatalogTrigger:
-					{
-						/// TODO @todo
-						break;
-					}
-					case asyncDatalogADC:
-					{
-						/// TODO @todo
-						break;
-					}
-					case asyncDatalogCircBuf:
-					{
-						/// TODO @todo
-						break;
-					}
-					case asyncDatalogCircCAS:
-					{
-						/// TODO @todo
-						break;
-					}
-					case asyncDatalogLogic:
-					{
-						/// TODO @todo
-						break;
-					}
-				}
+//				switch (TablesB.SmallTablesB.datalogStreamType) {
+//					case asyncDatalogOff:
+//					{
+//						break;
+//					}
+//					case asyncDatalogBasic:
+//					{
+//						/* Flag that we are transmitting! */
+//						TXBufferInUseFlags |= COM_SET_SCI0_INTERFACE_ID;
+//						// SCI0 only for now...
+//
+//						// headers including length...						*length = configuredBasicDatalogLength;
+//						TXBufferCurrentPositionHandler = (unsigned char*)&TXBuffer;
+//
+//						/* Initialised here such that override is possible */
+//						TXBufferCurrentPositionSCI0 = (unsigned char*)&TXBuffer;
+//						TXBufferCurrentPositionCAN0 = (unsigned char*)&TXBuffer;
+//
+//						/* Set the flags : firmware, no ack, no addrs, has length */
+//						*TXBufferCurrentPositionHandler = HEADER_HAS_LENGTH;
+//						TXBufferCurrentPositionHandler++;
+//
+//						/* Set the payload ID */
+//						*((unsigned short*)TXBufferCurrentPositionHandler) = responseBasicDatalog;
+//						TXBufferCurrentPositionHandler += 2;
+//
+//						/* Set the length */
+//						*((unsigned short*)TXBufferCurrentPositionHandler) = configuredBasicDatalogLength;
+//						TXBufferCurrentPositionHandler += 2;
+//
+//						/* populate data log */
+//						populateBasicDatalog();
+//						finaliseAndSend(0);
+//						break;
+//					}
+//					case asyncDatalogConfig:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//					case asyncDatalogTrigger:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//					case asyncDatalogADC:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//					case asyncDatalogCircBuf:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//					case asyncDatalogCircCAS:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//					case asyncDatalogLogic:
+//					{
+//						/// TODO @todo
+//						break;
+//					}
+//				}
 				// mechanism to ensure we only send something if the data has been updated
 				lastCalcCount = Counters.calculationsPerformed;
 			}

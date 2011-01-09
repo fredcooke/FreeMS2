@@ -136,7 +136,7 @@ void setupPagedRAM(unsigned char bool){
 		currentTuneRPage = RPAGE_TUNE_TWO;
 	}
 
-	RPAGE = currentTuneRPage;
+//	RPAGE = currentTuneRPage;
 }
 
 

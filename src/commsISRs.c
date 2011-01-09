@@ -101,7 +101,7 @@ extern inline void receiveAndIncrement(const unsigned char value){
  */
 void resetReceiveState(unsigned char sourceIDState){
 	/* Set the receive buffer pointer to the beginning */
-	RXBufferCurrentPosition = (unsigned char*)&RXBuffer;
+	RXBufferCurrentPosition = (unsigned char*)0x3000;//&RXBuffer;
 
 	/* Zero the flags, buffer length and checksum */
 	RXPacketLengthReceived = 0;

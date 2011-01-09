@@ -53,7 +53,6 @@ void initAllPagedAddresses(void) FPAGE_FE;
 void initVariables(void) FPAGE_FE;
 void initFlash(void) FPAGE_FE;
 void initECTTimer(void) FPAGE_FE;
-void initPITTimer(void) FPAGE_FE;
 void initSCIStuff(void) FPAGE_FE;
 void initConfiguration(void) FPAGE_FE;
 void initInterrupts(void) FPAGE_FE;

@@ -200,7 +200,7 @@
 
 
 /* Page control registers */
-#define RPAGE DVUCP(0x0016) /* Used to page table data in and out of visible memory. */
+//#define RPAGE DVUCP(0x0016) /* Used to page table data in and out of visible memory. */
 //0x0017 EPAGE DVUCP() /* /* TODO similar to above if we need another 2k of eeprom. what are advantages/disadvantages of eeprom over flash?? */
 #define PPAGE DVUCP(0x0030) /* TODO look at the best way to use the flash space in a complete system with a lot of code and data. used by compiler and maybe us to switch flash pages for loading/unloading data. */
 //0x0010 GPAGE DVUCP() /* /* Global page register for global instruction addressing. I doubt we will use this. */
@@ -847,73 +847,6 @@
 #define PWMDTY6 DVUCP(0x0322) /*						*/
 #define PWMDTY7 DVUCP(0x0323) /* PWM duty cycle value	*/
 #define PWMSDN DVUCP(0x0324) /* PWM shutdown behaviour register */
-
-
-/* Periodic Interupt Timer with down counter */
-#define PITCFLMT DVUCP(0x0340)	/* PIT Control and Force Load Micro Timer Register, high bit enables, low 2 bits force load micro timers */
-#define PITFLT DVUCP(0x0341)	/* PIT Force Load Timer Register, low 4 bits force load timers */
-#define PITCE DVUCP(0x0342)		/* PIT Channel Enable Register, low 4 bits let the channel count */
-#define PITMUX DVUCP(0x0343)	/* PIT Multiplex Register, low 4 bits set which micro time base is used */
-#define PITINTE DVUCP(0x0344)	/* PIT Interrupt Enable Register, low four bits control the ISRs */
-#define PITTF DVUCP(0x0345)		/* PIT Time-Out Flag Register, low 4 bits set when each counter reaches 0 */
-#define PITMTLD0 DVUCP(0x0346)	/* PIT Micro Timer Load Register 0, time to start counting from when reaching zero */
-#define PITMTLD1 DVUCP(0x0347)	/* PIT Micro Timer Load Register 1, time to start counting from when reaching zero */
-#define PITLD0 DVUSP(0x0348)	/* PIT Load Register 0, time to start counting from when reaching zero (0x0348 PITLD0 (hi), 0x0349 PITLD0 (lo)) */
-#define PITLD1 DVUSP(0x034C)	/* PIT Load Register 1, time to start counting from when reaching zero (0x034C PITLD1 (hi), 0x034D PITLD1 (lo)) */
-#define PITLD2 DVUSP(0x0350)	/* PIT Load Register 2, time to start counting from when reaching zero (0x0350 PITLD2 (hi), 0x0351 PITLD2 (lo)) */
-#define PITLD3 DVUSP(0x0354)	/* PIT Load Register 3, time to start counting from when reaching zero (0x0354 PITLD3 (hi), 0x0355 PITLD3 (lo)) */
-#define PITCNT0 DVUSP(0x034A)	/* PIT Count Register 0, current value of down counter (0x034A PITCNT0 (hi), 0x034B PITCNT0 (lo)) */
-#define PITCNT1 DVUSP(0x034E)	/* PIT Count Register 1, current value of down counter (0x034E PITCNT1 (hi), 0x034F PITCNT1 (lo)) */
-#define PITCNT2 DVUSP(0x0352)	/* PIT Count Register 2, current value of down counter (0x0352 PITCNT2 (hi), 0x0353 PITCNT2 (lo)) */
-#define PITCNT3 DVUSP(0x0356)	/* PIT Count Register 3, current value of down counter (0x0356 PITCNT3 (hi), 0x0357 PITCNT3 (lo)) */
-
-
-// TODO XGATE Set up stuff
-#define XGMCTL DVUSP(0x0380) /* TODO: 7th bit of this should be set to 0 for now to turn the XGATE off */
-#define XGMCTLHI DVUCP(0x0380)
-#define XGMCTLLO DVUCP(0x0381) /* TODO: or 7th bit of this should be set to 0 for now to turn the XGATE off */
-#define XGCHID DVUCP(0x0382)
-// unused on xdp512 #define XGVBR DVUCP(0x0384)
-// unused on xdp512 #define XGVBR DVUCP(0x0385)
-#define XGVBR DVUSP(0x0386)  /* This is all that is used on the xdp512! 16 bit (0x0386 DVUCP (hi), 0x0387 DVUCP (lo)) */
-#define XGIF_0 DVUCP(0x0388)
-#define XGIF_1 DVUCP(0x0389)
-#define XGIF_2 DVUCP(0x038A)
-#define XGIF_3 DVUCP(0x038B)  /* WRONG value 0x023B stated in the manual as being both xgate and can3!!!!! should be 0x038B i believe!!!!! */
-#define XGIF_4 DVUCP(0x038C)  /* WRONG value 0x023C stated in the manual as being both xgate and can3!!!!! should be 0x038C i believe!!!!! */
-#define XGIF_5 DVUCP(0x038D)
-#define XGIF_6 DVUCP(0x038E)
-#define XGIF_7 DVUCP(0x038F)
-#define XGIF_8 DVUCP(0x0390)
-#define XGIF_9 DVUCP(0x0391)
-#define XGIF_A DVUCP(0x0392)
-#define XGIF_B DVUCP(0x0393)
-#define XGIF_C DVUCP(0x0394)
-#define XGIF_D DVUCP(0x0395)
-#define XGIF_E DVUCP(0x0396)
-#define XGIF_F DVUCP(0x0397)
-#define XGSWT DVUSP(0x0398)
-//#define  DVUCP(0x0399 XGSWT (lo)
-#define XGSEM DVUSP(0x039A)
-//#define  DVUCP(0x039B XGSEM (lo)
-#define XGCCR DVUCP(0x039D)
-#define XGPC DVUSP(0x039E)
-//#define  DVUCP(0x039F XGPC (lo)
-#define XGR1 DVUSP(0x03A2)
-//#define  DVUCP(0x03A3 XGR1 (lo)
-#define XGR2 DVUSP(0x03A4)
-//#define  DVUCP(0x03A5 XGR2 (lo)
-#define XGR3 DVUSP(0x03A6)
-//#define  DVUCP(0x03A7 XGR3 (lo)
-#define XGR4 DVUSP(0x03A8)
-//#define  DVUCP(0x03A9 XGR4 (lo)
-#define XGR5 DVUSP(0x03AA)
-//#define  DVUCP(0x03AB XGR5 (lo)
-#define XGR6 DVUSP(0x03AC)
-//#define  DVUCP(0x03AD XGR6 (lo)
-#define XGR7 DVUSP(0x03AE)
-//#define  DVUCP(0x03AF XGR7 (lo)
-
 
 //// DBG
 //0x0020 DBGC1 DVUCP() /*

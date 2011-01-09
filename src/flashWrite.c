@@ -129,7 +129,7 @@ unsigned short writeBlock(blockDetails* details, void* buffer){
 
 		/* Configure the final burn variables */
 		sectors = 1; /* By definition if we are in this code there is only one */
-		RAMPage = RPAGE; /* The buffer is always in linear RAM region */
+		RAMPage = 0x00; /// this is bogus FIXME TODO @todo /* The buffer is always in linear RAM region */
 		RAMAddress = buffer; /* Save the buffer start address */
 		FlashAddress = (unsigned short*)(chunkFlashAddress - offset); /* Get the start of the flash sector */
 
@@ -146,11 +146,11 @@ unsigned short writeBlock(blockDetails* details, void* buffer){
 		}
 
 		/* Copy the middle section up regardless */
-		unsigned char oldRAMPage = RPAGE;
-		RPAGE = details->RAMPage;
+//		unsigned char oldRAMPage = RPAGE;
+//		RPAGE = details->RAMPage;
 		memcpy(buffer, details->RAMAddress, details->size);
 		buffer += details->size;
-		RPAGE = oldRAMPage;
+//		RPAGE = oldRAMPage;
 
 		/* If the chunk doesn't end at the end of the sector, copy the last are from flash */
 		if((offset + details->size) < 1024){
@@ -222,11 +222,11 @@ unsigned short writeSector(unsigned char RPage, unsigned short* RAMSourceAddress
 	unsigned short wordCount = flashSectorSizeInWords;
 
 	/* Save pages */
-	unsigned char currentRPage = RPAGE;
+//	unsigned char currentRPage = RPAGE;
 	unsigned char currentPPage = PPAGE;
 
 	/* Switch pages */
-	RPAGE = RPage;
+//	RPAGE = RPage;
 	PPAGE = PPage;
 
 	while (wordCount > 0)
@@ -242,7 +242,7 @@ unsigned short writeSector(unsigned char RPage, unsigned short* RAMSourceAddress
 	}
 
 	/* Restore pages */
-	RPAGE = currentRPage;
+//	RPAGE = currentRPage;
 	PPAGE = currentPPage;
 	// @todo TODO verify the write? necessary??
 	return 0;

@@ -112,8 +112,8 @@ signed char lookup8Bit3D( */
 unsigned short lookupPagedMainTableCellValue(mainTable* Table, unsigned short realRPM, unsigned short realLoad, unsigned char RAMPage){
 
 	/* Save the RPAGE value for restoration and switch pages. */
-	unsigned char oldRPage = RPAGE;
-	RPAGE = RAMPage;
+//	unsigned char oldRPage = RPAGE;
+//	RPAGE = RAMPage;
 
 	/* Find the bounding axis values and indices for RPM */
 	unsigned char lowRPMIndex = 0;
@@ -172,7 +172,7 @@ unsigned short lookupPagedMainTableCellValue(mainTable* Table, unsigned short re
 	unsigned short highRPMHighLoad = Table->Table[(Table->LoadLength * highRPMIndex) + highLoadIndex];
 
 	/* Restore the RAM page before doing the math */
-	RPAGE = oldRPage;
+//	RPAGE = oldRPage;
 
 	/* Find the two side values to interpolate between by interpolation */
 	unsigned short lowRPMIntLoad = lowRPMLowLoad + (((signed long)((signed long)lowRPMHighLoad - lowRPMLowLoad) * (realLoad - lowLoadValue))/ (highLoadValue - lowLoadValue));
@@ -282,9 +282,9 @@ unsigned short setAxisValue(unsigned short index, unsigned short value, unsigned
  * @return An error code. Zero means success, anything else is a failure.
  */
 unsigned short setPagedMainTableCellValue(unsigned char RPageValue, mainTable* Table, unsigned short RPMIndex, unsigned short LoadIndex, unsigned short cellValue){
-	unsigned char oldRPage = RPAGE;
+//	unsigned char oldRPage = RPAGE;
 	unsigned short errorID = 0;
-	RPAGE = RPageValue;
+//	RPAGE = RPageValue;
 	if(RPMIndex < Table->RPMLength){
 		if(LoadIndex < Table->LoadLength){
 			Table->Table[(Table->LoadLength * RPMIndex) + LoadIndex] = cellValue;
@@ -294,7 +294,7 @@ unsigned short setPagedMainTableCellValue(unsigned char RPageValue, mainTable* T
 	}else{
 		errorID = invalidMainTableRPMIndex;
 	}
-	RPAGE = oldRPage;
+//	RPAGE = oldRPage;
 	return errorID;
 }
 
@@ -314,10 +314,10 @@ unsigned short setPagedMainTableCellValue(unsigned char RPageValue, mainTable* T
  * @return An error code. Zero means success, anything else is a failure.
  */
 unsigned short setPagedMainTableRPMValue(unsigned char RPageValue, mainTable* Table, unsigned short RPMIndex, unsigned short RPMValue){
-	unsigned char oldRPage = RPAGE;
-	RPAGE = RPageValue;
+//	unsigned char oldRPage = RPAGE;
+//	RPAGE = RPageValue;
 	unsigned short errorID = setAxisValue(RPMIndex, RPMValue, Table->RPM, Table->RPMLength, errorBaseMainTableRPM);
-	RPAGE = oldRPage;
+//	RPAGE = oldRPage;
 	return errorID;
 }
 
@@ -337,10 +337,10 @@ unsigned short setPagedMainTableRPMValue(unsigned char RPageValue, mainTable* Ta
  * @return An error code. Zero means success, anything else is a failure.
  */
 unsigned short setPagedMainTableLoadValue(unsigned char RPageValue, mainTable* Table, unsigned short LoadIndex, unsigned short LoadValue){
-	unsigned char oldRPage = RPAGE;
-	RPAGE = RPageValue;
+//	unsigned char oldRPage = RPAGE;
+//	RPAGE = RPageValue;
 	unsigned short errorID = setAxisValue(LoadIndex, LoadValue, Table->Load, Table->LoadLength, errorBaseMainTableLoad);
-	RPAGE = oldRPage;
+//	RPAGE = oldRPage;
 	return errorID;
 }
 
@@ -363,10 +363,10 @@ unsigned short setPagedTwoDTableCellValue(unsigned char RPageValue, twoDTableUS*
 	if(cellIndex > 15){
 		return invalidTwoDTableIndex;
 	}else{
-		unsigned char oldRPage = RPAGE;
-		RPAGE = RPageValue;
+//		unsigned char oldRPage = RPAGE;
+//		RPAGE = RPageValue;
 		Table->Values[cellIndex] = cellValue;
-		RPAGE = oldRPage;
+//		RPAGE = oldRPage;
 		return 0;
 	}
 }
@@ -387,10 +387,10 @@ unsigned short setPagedTwoDTableCellValue(unsigned char RPageValue, twoDTableUS*
  * @return An error code. Zero means success, anything else is a failure.
  */
 unsigned short setPagedTwoDTableAxisValue(unsigned char RPageValue, twoDTableUS* Table, unsigned short axisIndex, unsigned short axisValue){
-	unsigned char oldRPage = RPAGE;
-	RPAGE = RPageValue;
+//	unsigned char oldRPage = RPAGE;
+//	RPAGE = RPageValue;
 	unsigned short errorID = setAxisValue(axisIndex, axisValue, Table->Axis, 16, errorBaseTwoDTableAxis);
-	RPAGE = oldRPage;
+//	RPAGE = oldRPage;
 	return errorID;
 }
 
