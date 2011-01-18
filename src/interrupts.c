@@ -78,9 +78,9 @@ const interruptTable _vectors[] VECTORS = {
 /*													Serial 0																	*/
 
 /* 0xFFE0 to 0xFFEF */
-	Injector6ISR,	Injector5ISR,	Injector4ISR,	Injector3ISR,	Injector2ISR,	Injector1ISR,	SecondaryRPMISR,PrimaryRPMISR,
+	Injector6ISR,	Injector5ISR,	SecondaryRPMISR,Injector4ISR,	Injector3ISR,	Injector2ISR,	Injector1ISR,	PrimaryRPMISR,
 /*	ECT7			ECT6			ECT5			ECT4			ECT3			ECT2			ECT1			ECT0		*/
-/*	Injector 6		Injector 5		Injector 4		Injector 3		Injector 2		Injector 1		Secondary RPM	Primary RPM	*/
+/*	IAC2			IAC1			Secondary RPM	Injector 4		Injector 3		Injector 2		Injector 1		Primary RPM	*/
 
 /* 0xFFF0 to 0xFFFF */
 	RTIISR,			IRQISR,			XIRQISR,		UISR,			UISR,			UISR,			UISR,			_start
