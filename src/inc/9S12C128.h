@@ -72,152 +72,77 @@
 0x0006 Reserved
 0x0007 Reserved
 0x0008 PORTE
-Bit 7 6 5 4 3 2
-Bit 1 Bit 0
 0x0009 DDRE
-Bit 7 6 5 4 3 Bit 2
-0 0
 0x000A PEAR
-NOACCE
-0
-PIPOE NECLK LSTRE RDWE
-0 0
 0x000B MODE
-MODC MODB MODA
-0
-IVIS
-0
-EMK EME
 0x000C PUCR
-PUPKE
-0 0
-PUPEE
-0 0
-PUPBE PUPAE
 0x000D RDRIV
-RDPK
-0 0
-RDPE
-0 0
-RDPB RDPA
 0x000E EBICTL
-ESTR
 0x000F Reserved
-Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
-28 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
-Rev 01.24
-0x0010Ð0x0014 MMC Map 1 of 4 (HCS12 Module Mapping Control)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+
+// 0x0010Ð0x0014 MMC Map 1 of 4 (HCS12 Module Mapping Control)
+
 0x0010 INITRM
-RAM15 RAM14 RAM13 RAM12 RAM11
-0 0
-RAMHAL
+
 0x0011 INITRG
-REG14 REG13 REG12 REG11
-0 0 0
 0x0012 INITEE
-EE15 EE14 EE13 EE12 EE11
-0 0
-EEON
 0x0013 MISC
-EXSTR1 EXSTR0 ROMHM ROMON
 0x0014 Reserved
-0x0015Ð0x0016 INT Map 1 of 2 (HCS12 Interrupt)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x0015Ð0x0016 INT Map 1 of 2 (HCS12 Interrupt)
 0x0015 ITCR
-WRINT ADR3 ADR2 ADR1 ADR0
 0x0016 ITEST
-INTE INTC INTA INT8 INT6 INT4 INT2 INT0
-0x0017Ð0x0017 MMC Map 2 of 4 (HCS12 Module Mapping Control)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x0017Ð0x0017 MMC Map 2 of 4 (HCS12 Module Mapping Control)
 0x0017 Reserved
-0x0018Ð0x0018 Miscellaneous Peripherals (Device User Guide)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x0018Ð0x0018 Miscellaneous Peripherals (Device User Guide)
 0x0018 Reserved
-0x0019Ð0x0019 VREG3V3 (Voltage Regulator)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x0019Ð0x0019 VREG3V3 (Voltage Regulator)
 $0019 VREGCTRL
-LVIE LVIF
-Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
-Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 29
-Rev 01.24
-0x001AÐ0x001B Miscellaneous Peripherals (Device User Guide)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+
+//0x001AÐ0x001B Miscellaneous Peripherals (Device User Guide)
 0x001A PARTIDH
 0x001B PARTIDL
-0x001CÐ0x001D MMC Map 3 of 4 (HCS12 Module Mapping Control, Device User Guide)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x001CÐ0x001D MMC Map 3 of 4 (HCS12 Module Mapping Control, Device User Guide)
 0x001C MEMSIZ0
 0x001D MEMSIZ1
-0x001EÐ0x001E MEBI Map 2 of 3 (HCS12 Multiplexed External Bus Interface)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x001EÐ0x001E MEBI Map 2 of 3 (HCS12 Multiplexed External Bus Interface)
 0x001E INTCR
-IRQE IRQEN
-0 0 0 0 0 0
-0x001FÐ0x001F INT Map 2 of 2 (HCS12 Interrupt)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x001FÐ0x001F INT Map 2 of 2 (HCS12 Interrupt)
 0x001F HPRIO
-PSEL7 PSEL6 PSEL5 PSEL4 PSEL3 PSEL2 PSEL1
-0
-0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+//0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug)
 0x0020 DBGC1
-DBGEN ARM TRGSEL BEGIN DBGBRK
-0
-CAPMOD
 0x0021 DBGSC
-TRG
 0x0022 DBGTBH
 0x0023 DBGTBL
 0x0024 DBGCNT
 0x0025 DBGCCX
-PAGSEL EXTCMP
-Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
-30 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
-Rev 01.24
 0x0026 DBGCCH
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0027 DBGCCL
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0028 DBGC2
-BKABEN FULL BDM TAGAB BKCEN TAGC RWCEN RWC
 0x0029 DBGC3
-BKAMBH BKAMBL BKBMBH BKBMBL RWAEN RWA RWBEN RWB
 0x002A DBGCAX
-PAGSEL EXTCMP
 0x002B DBGCAH
-Bit 15 14 13 12 11 10 9 Bit 8
 0x002C DBGCAL
-Bit 7 6 5 4 3 2 1 Bit 0
 0x002D DBGCBX
-PAGSEL EXTCMP
 0x002E DBGCBH
-Bit 15 14 13 12 11 10 9 Bit 8
 0x002F DBGCBL
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0030Ð0x0031 MMC Map 4 of 4 (HCS12 Module Mapping Control)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0030 PPAGE
 PIX5 PIX4 PIX3 PIX2 PIX1 PIX0
 0x0031 Reserved
 0x0032Ð0x0033 MEBI Map 3 of 3 (HCS12 Multiplexed External Bus Interface)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0032 PORTK(1)
 1. Only applicable in special emulation-only bond outs, for emulation of extended memory map.
 Bit 7 6 5 4 3 2 1 Bit 0
 0x0033 DDRK1
 Bit 7 6 5 4 3 2 1 Bit 0
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 $0032 Reserved
 $0033 Reserved
 0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug) (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 31
 Rev 01.24
 ep0x0040-0x006F TIM
 0x0034Ð0x003F CRG (Clock and Reset Generator)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0034 SYNR
 SYN5 SYN4 SYN3 SYN2 SYN1 SYN0
 0x0035 REFDV
@@ -262,7 +187,6 @@ FCM
 CTCTL
 TEST ONLY
 0x003F ARMCOP
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0040 TIOS
 IOS7 IOS6 IOS5 IOS4 IOS3 IOS2 IOS1 IOS0
 0x0041 CFORC
@@ -329,7 +253,6 @@ Bit 15 14 13 12 11 10 9 Bit 8
 Bit 7 6 5 4 3 2 1 Bit 0
 0x005E TC7 (hi)
 Bit 15 14 13 12 11 10 9 Bit 8
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 33
 Rev 01.24
@@ -356,16 +279,13 @@ Bit 7 6 5 4 3 2 1 Bit 0
 0x006E Reserved
 0x006F Reserved
 0x0070Ð0x007F Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0070Ð
 0x007F
 Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 34 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
 Rev 01.24
 0x0080Ð0x009F ATD (Analog-to-Digital Converter 10 Bit 8 Channel)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0080 ATDCTL0
 0x0081 ATDCTL1
 0x0082 ATDCTL2
@@ -415,12 +335,10 @@ Rev 01.24
 0x009E ATDDR7H
 0x009F ATDDR7L
 0x00A0Ð0x00C7 Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x00A0Ð
 0x00C7
 Reserved
 0x00C8Ð0x00CF SCI (Asynchronous Serial Interface)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x00C8 SCIBDH
 SBR12 SBR11 SBR10 SBR9 SBR8
 0x00C9 SCIBDL
@@ -431,7 +349,6 @@ LOOPS SCISWAI RSRC M WAKE ILT PE PT
 TIE TCIE RIE ILIE TE RE RWU SBK
 0x00CC SCISR1
 0x0080Ð0x009F ATD (Analog-to-Digital Converter 10 Bit 8 Channel) (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 36 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
 Rev 01.24
@@ -443,12 +360,10 @@ T8
 0 0 0 0 0 0
 0x00CF SCIDRL
 0x00D0Ð0x00D7 Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x00D0Ð
 0x00D7
 Reserved
 0x00D8Ð0x00DF SPI (Serial Peripheral Interface)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x00D8 SPICR1
 SPIE SPE SPTIE MSTR CPOL CPHA SSOE LSBFE
 0x00D9 SPICR2
@@ -466,12 +381,10 @@ Bit7 6 5 4 3 2 1 Bit0
 0x00DE Reserved
 0x00DF Reserved
 0x00C8Ð0x00CF SCI (Asynchronous Serial Interface) (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 37
 Rev 01.24
 0x00E0Ð0x00FF PWM (Pulse Width Modulator)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 $00E0 PWME
 PWME5 PWME4 PWME3 PWME2 PWME1 PWME0
 $00E1 PWMPOL
@@ -538,12 +451,10 @@ PWMLVL
 PWM5INL PWM5ENA
 $00FF Reserved
 0x0110Ð0x013F Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0110Ð
 0x003F
 Reserved
 0x0140Ð0x017F CAN (Scalable Controller Area Network Ñ MSCAN)(1)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0140 CANCTL0
 RXFRM
 RXACT
@@ -566,7 +477,6 @@ OVRIF RXF
 0x0145 CANRIER
 WUPIE CSCIE RSTATE1 RSTATE0 TSTATE1 TSTATE0 OVRIE RXFIE
 0x00E0Ð0x00FF PWM (Pulse Width Modulator) (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 39
 Rev 01.24
@@ -615,13 +525,11 @@ CANTXFG
 FOREGROUND TRANSMIT BUFFER see Table 1-2
 1. Not available on the MC9S12GC Family members. Those memory locations should not be accessed.
 Table 1-2. Detailed MSCAN Foreground Receive and Transmit Buffer Layout
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0xXXX0
 CANxRIDR0
 0xXXX1
 CANxRIDR1
 0x0140Ð0x017F CAN (Scalable Controller Area Network Ñ MSCAN)(1) (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 40 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
 Rev 01.24
@@ -667,17 +575,14 @@ PRIO7 PRIO6 PRIO5 PRIO4 PRIO3 PRIO2 PRIO1 PRIO0
 0xxx1E CANxTTSRH
 0xxx1F CANxTTSRL
 Table 1-2. Detailed MSCAN Foreground Receive and Transmit Buffer Layout (continued)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 41
 Rev 01.24
 0x0180Ð0x023F Reserved
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0180Ð
 0x023F
 Reserved
 0x0240Ð0x027F PIM (Port Interface Module) (Sheet 1 of 3)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0240 PTT
 PTT7 PTT6 PTT5 PTT4 PTT3 PTT2 PTT1 PTT0
 0x0241 PTIT
@@ -751,7 +656,6 @@ PTJ7 PTJ6
 0 0 0 0 0 0
 0x0269 PTIJ
 0x0240Ð0x027F PIM (Port Interface Module) (Sheet 2 of 3)
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 43
 Rev 01.24
@@ -788,7 +692,6 @@ PPSAD7 PPSAD6 PPSAD5 PPSAD4 PPSAD3 PPSAD2 PPSAD1 PPSAD0
 0x027F
 Reserved
 0x0280Ð0x03FF Reserved Space
-Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
 0x0280Ð
 0x2FF
 Reserved
