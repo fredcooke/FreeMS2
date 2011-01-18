@@ -24,25 +24,25 @@
  */
 
 
-/**	@file 9S12XDP512.h
+/**	@file 9S12C128.h
  * @ingroup allHeaders
  * @ingroup globalHeaders
  *
- * @brief MC9S12XDP512 register definitions
+ * @brief MC9S12C128 register definitions
  *
- * This is the device header for the FreeScale MC9S12XDP512 MCU. It contains
+ * This is the device header for the FreeScale MC9S12C128 MCU. It contains
  * declarations that allow access to all of the devices control registers.
  *
- * These are the full basic register definitions for the Freescale 9S12XDP512
- * processor as taken from MC9S12XDP512V2.pdf Appendix G
+ * These are the full basic register definitions for the Freescale 9S12C128
+ * processor as taken from MC9S12C128V1.pdf Chapter 1, section 1.2.2.
  *
  * @author Fred Cooke
  */
 
 
 /* see if we've seen this, if not, mark seen and process */
-#ifndef FILE_9S12XDP512_H_SEEN
-#define FILE_9S12XDP512_H_SEEN
+#ifndef FILE_9S12C128_H_SEEN
+#define FILE_9S12C128_H_SEEN
 
 
 /* shortcuts to speed formatting */
@@ -942,6 +942,6 @@
 
 #else
 	/* let us know if we are being untidy with headers */
-	#warning "Header file 9S12XDP512_H seen before, sort it out!"
+	#warning "Header file 9S12C128_H seen before, sort it out!"
 /* end of the wrapper ifdef from the very top */
 #endif

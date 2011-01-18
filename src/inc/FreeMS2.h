@@ -48,7 +48,7 @@
 
 /* Include top level files that everything else relies on */
 #include "memory.h"
-#include "9S12XDP512.h"
+#include "9S12C128.h"
 #include "flashGlobals.h" /// @todo TODO For Sean to integrate back in
 ///include "registerMasks.h @todo TODO we should define the register masks that we use in one place, but probably not in the main device header.
 
