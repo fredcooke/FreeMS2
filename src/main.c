@@ -254,7 +254,7 @@ int  main(){ // TODO maybe move this to paged flash ?
 			}
 		}
 		// on once per cycle for main loop heart beat (J0)
-		PORTJ ^= 0x01;
+		//PORTJ ^= 0x01;
 
 
 		// debug...

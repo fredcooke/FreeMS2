@@ -73,9 +73,6 @@ void PrimaryRPMISR(void)
 	}
 
 	if(risingEdge){
-		/* Echo input condition on J7 */
-		PORTJ |= 0x80;
-
 		// increment crank pulses TODO this needs to be wrapped in tooth period and width checking
 		primaryPulsesPerSecondaryPulse++;
 
@@ -91,7 +88,6 @@ void PrimaryRPMISR(void)
 		}
 		RuntimeVars.primaryInputLeadingRuntime = TCNT - codeStartTimeStamp;
 	}else{
-		PORTJ &= 0x7F;
 		RuntimeVars.primaryInputTrailingRuntime = TCNT - codeStartTimeStamp;
 	}
 
@@ -128,9 +124,6 @@ void SecondaryRPMISR(void)
 	}
 
 	if(risingEdge){
-		// echo input condition
-		PORTJ |= 0x40;
-
 		LongTime timeStamp;
 
 		/* Install the low word */
@@ -144,7 +137,6 @@ void SecondaryRPMISR(void)
 
 		RuntimeVars.secondaryInputLeadingRuntime = TCNT - codeStartTimeStamp;
 	}else{
-		PORTJ &= 0xBF;
 		RuntimeVars.secondaryInputTrailingRuntime = TCNT - codeStartTimeStamp;
 	}
 

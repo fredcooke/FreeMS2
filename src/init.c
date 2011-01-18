@@ -135,10 +135,6 @@ void initIO(){
 	ATD0CTL5 = 0xB0; /* Sets justification to right, multiplex and scan all channels. Writing to this causes conversions to begin */
 
 	/* And configure them all for analog input */
-	ATD1CTL0 = 0x07; /* TODO bring this out of config based on chip variant variable. Sets wrap on 8th ADC because we can't use the other 8 on 112 pin version */
-	//ATD0CTL1 = 0x07/* Trigger and interrupt configuration, unused for now. */
-	ATD1CTL2 = 0xC0; /* Turns on the ADC block and sets auto flag clear */
-	ATD1CTL3 = 0x40; /* Set sequence length = 8 */
 	ATD0CTL4 = 0x73; /* Set the ADC clock and sample period for best accuracy */
 	ATD0CTL5 = 0xB0; /* Sets justification to right, multiplex and scan all channels. Writing to this causes conversions to begin */
 
@@ -160,8 +156,6 @@ void initIO(){
 	PWMPER3 = 0xFF; // 255 for ADC1 testing
 	PWMPER4 = 0xFF; // 255 for ADC1 testing
 	PWMPER5 = 0xFF; // 255 for ADC1 testing
-	PWMPER6 = 0xFF; // 255 for ADC1 testing
-	PWMPER7 = 0xFF; // 255 for ADC1 testing
 	/* PWM duties */
 	PWMDTY0 = 0;
 	PWMDTY1 = 0;
@@ -169,8 +163,6 @@ void initIO(){
 	PWMDTY3 = 0;
 	PWMDTY4 = 0;
 	PWMDTY5 = 0;
-	PWMDTY6 = 0;
-	PWMDTY7 = 0;
 
 
 	/* Initialise the state of pins configured as output */
@@ -179,12 +171,6 @@ void initIO(){
 	PORTB = ZEROS; /* Init the rest of the spark outputs as off */
 	PORTE = 0x1F; /* 0b_0001_1111 : when not in use 0b_1001_1111 PE7 should be high PE5 and PE6 should be low, the rest high */
 	PORTK = ZEROS;
-	PORTS = ZEROS;
-	PORTT = ZEROS; /* All pins in off state at boot up (only matters for 2 - 7) */
-	PORTM = ZEROS;
-	PORTP = ZEROS; // TODO hook these up to the adc channels such that you can vary the brightness of an led with a pot.
-	PORTH = ZEROS;
-	PORTJ = ZEROS;
 	/* AD0PT1 You are out of your mind if you waste this on digital Inputs */
 	/* AD1PT1 You are out of your mind if you waste this on digital Inputs */
 
@@ -198,13 +184,8 @@ void initIO(){
 	DDRT = 0xFC; /* 0b_1111_1100 set ECT pins 0,1 to IC and 2:7 to OC (8) */
 	DDRM = ONES; /* CAN 0 - 3 (8) */
 	DDRP = ONES; /* PWM pins (8) */
-	DDRH = ZEROS; /* All pins configured as input for misc isrs (SPI1, SPI2) (8) */
 	DDRJ = ONES; /* Only 0,1,6,7 are brought out on the 112 pin chip (4) */
-	/* Configure the non bonded pins to output to avoid current drain (112 pin package) */
-	DDRC = ONES; /* NON-bonded external data bus pins */
-	DDRD = ONES; /* NON-bonded external data bus pins */
 	/* AD0DDR1 You are out of your mind if you waste this on digital Inputs */
-	/* AD1DDR1 You are out of your mind if you waste this on digital Inputs */
 #endif
 }
 
@@ -487,14 +468,12 @@ void initVariables(){
  *
  * We want to put the flash clock as high as possible between 150kHz and 200kHz
  *
- * The oscillator clock is 16MHz and because that is above 12.8MHz we will set
- * the PRDIV8 bit to further divide by 8 bits as per the manual.
+ * The oscillator clock is 16MHz and because that is not above 12.8MHz we will
+ * not set the PRDIV8 bit to further divide by 8 bits as per the manual.
  *
- * 16MHz = 16000KHz which pre-divided by 8 is 2000kHz
+ * 8MHz = 8000KHz
  *
- * 2000kHz / 200kHz = 10 thus we want to set the divide register to 10 or 0x0A
- *
- * Combining 0x0A with PRDIV8 gives us 0x4A (0x0A | 0x40 = 0x4A) so we use that
+ * 8000kHz / 200kHz = 40 thus we want to set the divide register to 40 or 0x0A
  *
  * @author Sean Keys
  *
@@ -504,7 +483,7 @@ void initVariables(){
  *          damage your flash module or get corrupt data written to it.
  */
 void initFlash(){
-	FCLKDIV = 0x4A;                  	/* Set the flash clock frequency	*/
+	FCLKDIV = 0x28;                  	/* Set the flash clock frequency	*/
 	FPROT = 0xFF;                    	/* Disable all flash protection 	*/
 	FSTAT = FSTAT | (PVIOL | ACCERR);	/* Clear any errors             	*/
 }
@@ -517,38 +496,33 @@ void initECTTimer(){
 
 #ifndef NO_INIT
 	/* Timer channel interrupts */
-	TIE = 0x03; /* 0,1 IC interrupts enabled for reading engine position and RPM, 6 OC channels disabled such that no injector switching happens till scheduled */
+	TIE = 0x21;//0x03; /* 0,5 IC interrupts enabled for reading engine position and RPM, 6 OC channels disabled such that no injector switching happens till scheduled */
 	TFLG = ONES; /* Clear all the flags such that we are up and running before they first occur */
 	TFLGOF = ONES; /* Clear all the flags such that we are up and running before they first occur */
 
 	/* TODO Turn the timer on and set the rate and overflow interrupt */
-//	DLYCT = 0xFF; /* max noise filtering as experiment for volvo this will come from flash config */ // just hiding a wiring/circuit issue...
-	TSCR1 = 0x88; /* 0b_1000_1000 Timer enabled, and precision timer turned on */
-	TSCR2 = 0x87; /* 0b_1000_0111 Overflow interrupt enable, divide by 256 if precision turned off */
-//	PTPSR = 0x03; /* 4 prescaler gives .1uS resolution and max period of 7ms measured */
-	PTPSR = 0x1F; /* 32 prescaler gives 0.8uS resolution and max period of 52.4288ms measured */
-//	PTPSR = 0x3F; /* 64 prescaler gives 1.6uS resolution and max period of 105ms measured */
-//	PTPSR = 0xFF; /* 256 prescaler gives 6.4uS resolution and max period of 400ms measured */
-//	PTPSR = 0x7F; /* 128 prescaler gives 3.2uS resolution and max period of 200ms measured */
+	TSCR1 = 0x80; /* 0b_1000_0000 Timer enabled */
+	TSCR2 = 0x84; /* 0b_1000_0100 Overflow interrupt enable, divide by 16 */
 	/* http://www.google.com/search?hl=en&safe=off&q=1+%2F+%2840MHz+%2F+32+%29&btnG=Search */
 	/* http://www.google.com/search?hl=en&safe=off&q=1+%2F+%2840MHz+%2F+32+%29+*+2%5E16&btnG=Search */
 	/* www.mecheng.adelaide.edu.au/robotics_novell/WWW_Devs/Dragon12/LM4_Timer.pdf */
 
 	/* Initial actions */
-	TIOS = 0xFC; /* 0b_1111_1100 0 and 1 are input capture, 2 through 7 are output compare */
+	/* ms2extra pin config
+	0 = RPM/Position input primary
+	1 = Injector 1
+	2 = Injector 3
+	3 = Injector 2
+	4 = Injector 4
+	5 = RPM/Position input secondary
+	6 = IAC1
+	7 = IAC2
+	*/
+	TIOS = 0xDE; /* 0b_1101_1110 - 0 and 5 are input capture, 1 through 4 and 6 and 7 are output compare */
 	TCTL1 = ZEROS; /* Set disabled at startup time, use these and other flags to switch fueling on and off inside the decoder */
 	TCTL2 = ZEROS; /* 0,1 have compare turned off regardless as they are in IC mode. */
-	TCTL3 = ZEROS; /* Capture off for 4 - 7 */
-	TCTL4 = 0x0F; /* Capture on both edges of two pins for IC (0,1), capture off for 2,3 */
-
-	// TODO setup delay counters on 0 and 1 to filter noise (nice feature!)
-	//DLYCT = ??; built in noise filter
-
-	/* Configurable tachometer output */
-	PTMCPSR = fixedConfigs1.tachoSettings.tachoTickFactor - 1; // Precision prescaler - fastest is 1 represented by 0, slowest/longest possible is 256 represented by 255 or 0xFF
-	MCCNT = ONES16; // init to slowest possible, first
-	MCCTL = 0xC4; // turn on and setup the mod down counter
-	MCFLG = 0x80; // clear the flag up front
+	TCTL3 = 0x0C; /* Capture on both edges of IC 5 (secondary in), capture off for 4,6,7 */
+	TCTL4 = 0x03; /* Capture on both edges of IC 0 (primary in), capture off for 1,2,3 */
 #endif
 }
 
@@ -650,21 +624,10 @@ void initConfiguration(){
 
 /* Set up all the remaining interrupts */
 void initInterrupts(){
-	/* IMPORTANT : Set the s12x vector base register (Thanks Karsten!!) */
-	IVBR = 0xF7; /* Without this the interrupts will never find your code! */
-
 	/* Set up the Real Time Interrupt */
-	RTICTL = 0x81; /* 0b_1000_0001 0.125ms/125us period http://www.google.com/search?hl=en&safe=off&q=1+%2F+%2816MHz+%2F+%282+*+10%5E3%29+%29&btnG=Search */
-//	RTICTL = 0xF9; /* 0b_1111_1001 0.125s/125ms period http://www.google.com/search?hl=en&safe=off&q=1+%2F+%2816MHz+%2F+%282*10%5E6%29+%29&btnG=Search */
+	RTICTL = 0x10; /* 0b_0001_0000 0.128ms/128us period http://www.google.com/search?hl=en&safe=off&q=1+%2F+%288MHz+%2F+%282^10%29+%29&aq=f&aqi=h1&aql=&oq= */
 	CRGINT |= 0x80; /* Enable the RTI */
 	CRGFLG = 0x80; /* Clear the RTI flag */
-
-#ifndef NO_INIT
-	// set up port H for testing
-	PPSH = ZEROS; // falling edge/pull up for all
-	PIEH = ONES; // enable all pins interrupts
-	PIFH = ONES; // clear all port H interrupt flags
-#endif
 
 	// TODO set up irq and xirq for testing
 	// IRQCR for IRQ

@@ -178,8 +178,6 @@ void adjustPWM(){
 	PWMDTY3 = ATD0DR3 >> 2; // scale raw adc to a duty
 	PWMDTY4 = ATD0DR4 >> 2; // scale raw adc to a duty
 	PWMDTY5 = ATD0DR5 >> 2; // scale raw adc to a duty
-	PWMDTY6 = ATD0DR6 >> 2; // scale raw adc to a duty
-	PWMDTY7 = ATD0DR7 >> 2; // scale raw adc to a duty (user led instead at the moment, see init)
 }
 
 
@@ -201,16 +199,6 @@ void sampleEachADC(ADCArray *Arrays){
 	Arrays->AAP = ATD0DR5;
 	Arrays->BRV = ATD0DR6;
 	Arrays->MAT = ATD0DR7;
-
-	/* ATD1 */
-	Arrays->EGO2 = ATD1DR0;
-	Arrays->IAP = ATD1DR1;
-	Arrays->MAF = ATD1DR2;
-	Arrays->SpareADC3 = ATD1DR3;
-	Arrays->SpareADC4 = ATD1DR4;
-	Arrays->SpareADC5 = ATD1DR5;
-	Arrays->SpareADC6 = ATD1DR6;
-	Arrays->SpareADC7 = ATD1DR7;
 }
 
 
@@ -234,10 +222,6 @@ void sampleLoopADC(ADCArray *Arrays){
 	for(loop=0;loop<16;loop += 2){
 		/* Do the first block */
 		DVUSP(addr + loop) = DVUSP(ATD0_BASE + loop);
-
-		/* Do the second block */
-		DVUSP(addr + 16 + loop) = DVUSP(ATD1_BASE + loop);
-		/// @todo TODO this needs to be split into two loops one for the small block and one for the big one for the future chips.
 	}
 }
 

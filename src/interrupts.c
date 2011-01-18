@@ -68,7 +68,7 @@ const interruptTable _vectors[] VECTORS = {
 /*																																*/
 
 /* 0xFFC0 to 0xFFCF */
-	UISR,			UISR,			UISR,			UISR,			UISR,			ModDownCtrISR,	PortHISR,		PortJISR,
+	UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			UISR,			PortJISR,
 /*	IIC0			Reserved		CRG self clock	CRG PLL lock	PAB Overflow	ModDwnCtrUF		Port H			Port J		*/
 /*																																*/
 

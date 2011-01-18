@@ -95,12 +95,10 @@ void PrimaryRPMISR(void) {
 				if (thisHighLowTime.timeLong > (lastHighLowTime.timeLong + (lastHighLowTime.timeLong>>1)) &&
 						thisHighLowTime.timeLong < ((lastHighLowTime.timeLong<<1) + (lastHighLowTime.timeLong>>1))) {
 					// We have sync
-					PORTP |= 0x80;
 					count = 1;
 				} else {
 					//We have lost sync
 					count = 0;
-					PORTP &= 0x7F;
 				}
 			}else if (count == 2 || (count%2 == 0 &&
 					thisHighLowTime.timeLong > (lastHighLowTime.timeLong>>1) &&
@@ -109,11 +107,8 @@ void PrimaryRPMISR(void) {
 			} else {
 				//We have lost sync
 				count = 0;
-				PORTP &= 0x7F;
 			}
 
-			/* Echo input condition on J7 */
-			PORTJ |= 0x80;
 			// increment crank pulses TODO this needs to be wrapped in tooth period and width checking
 			lastHighLowTime.timeLong = thisHighLowTime.timeLong;
 			primaryPulsesPerSecondaryPulse++;
@@ -124,10 +119,7 @@ void PrimaryRPMISR(void) {
 			} else {
 				//We have lost sync
 				count = 0;
-				PORTP &= 0x7F;
 			}
-			/* Echo input condition on J7 */
-			PORTJ &= 0x7F;
 			RuntimeVars.primaryInputTrailingRuntime = TCNT - codeStartTimeStamp;
 			lowTime.timeLong = thisPeriod.timeLong;
 		}
@@ -165,8 +157,6 @@ void SecondaryRPMISR(void) {
 	}
 
 	if (risingEdge) {
-		// echo input condition
-		PORTJ |= 0x40;
 
 		LongTime timeStamp;
 
@@ -181,7 +171,6 @@ void SecondaryRPMISR(void) {
 
 		RuntimeVars.secondaryInputLeadingRuntime = TCNT - codeStartTimeStamp;
 	} else {
-		PORTJ &= 0xBF;
 		RuntimeVars.secondaryInputTrailingRuntime = TCNT - codeStartTimeStamp;
 	}
 

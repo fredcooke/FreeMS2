@@ -137,7 +137,7 @@ typedef struct {
 
 typedef struct {
 	/* Serial settings */
-	unsigned short baudDivisor;							/* 22 = (40MHz / (16*115.2kHz)) = 21.7013889 */
+	unsigned short baudDivisor;							/* 13 = (24MHz / (16*115.2kHz)) = 13.0208333 */
 	unsigned char networkAddress;						/* Default = 1, Default for PC = 10 */
 } serialSetting;
 
