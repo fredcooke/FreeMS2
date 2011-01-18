@@ -1,7 +1,5 @@
-Adjust core init values to suit ms2 clock setup etc
-Simplify init by commenting out calls to sub parts except bare essentials
-Migrate to correct header/register structure
-Adjust memory references in the Makefile, linker scripts, headers
+Adjust memory references in the Makefile, linker scripts, headers - mostly done, double check/fix.
+Setup very simple echo style comms that have no brains at all.
 Severely cut back on memory usage, migrating everything to flash temporarily
 Modify comms to not use big buffers
 Update location IDs to match reality
@@ -13,4 +11,4 @@ Probably just tune one thing at a time and burn it before tuning some other
 thing. Use pointers to either point at flash or live RAM data if available.
 
 Configure the ADC setup correctly, and assign to internal vars.
-Rearrange the port T channels to align with MS2Extra usage.
+
