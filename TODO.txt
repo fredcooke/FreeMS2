@@ -1,10 +1,17 @@
 Adjust memory references in the Makefile, linker scripts, headers - mostly done, double check/fix.
 Fix up assembly header and/or code to be correct and possibly even work.
+Fix register usage in timers, currently configuring random pins etc.
 Setup very simple echo style comms that have no brains at all.
 Severely cut back on memory usage, migrating everything to flash temporarily
 Modify comms to not use big buffers
 Update location IDs to match reality
 Modify flash write stuff to not use big buffer
+
+Fix and modify various things commented out in order to get it to build and run:
+
+all references to RPAGE
+all references to tablesA-D
+commented out calls to comms, fuel, vars stuff
 
 Figure out a paging mechanism:
 
