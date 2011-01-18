@@ -132,9 +132,7 @@ PIX5 PIX4 PIX3 PIX2 PIX1 PIX0
 0x0032Ð0x0033 MEBI Map 3 of 3 (HCS12 Multiplexed External Bus Interface)
 0x0032 PORTK(1)
 1. Only applicable in special emulation-only bond outs, for emulation of extended memory map.
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0033 DDRK1
-Bit 7 6 5 4 3 2 1 Bit 0
 $0032 Reserved
 $0033 Reserved
 0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug) (continued)
@@ -224,48 +222,30 @@ C7F C6F C5F C4F C3F C2F C1F C0F
 TOF
 0 0 0 0 0 0 0
 0x0050 TC0 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0051 TC0 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0052 TC1 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0053 TC1 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0054 TC2 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0055 TC2 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0056 TC3 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0057 TC3 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0058 TC4 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0059 TC4 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x005A TC5 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x005B TC5 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x005C TC6 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x005D TC6 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x005E TC7 (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 33
 Rev 01.24
 0x005F TC7 (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0060 PACTL
 PAEN PAMOD PEDGE CLK1 CLK0 PAOVI PAI
 0x0061 PAFLG
 PAOVF PAIF
 0x0062 PACNT (hi)
-Bit 15 14 13 12 11 10 9 Bit 8
 0x0063 PACNT (lo)
-Bit 7 6 5 4 3 2 1 Bit 0
 0x0064 Reserved
 0x0065 Reserved
 0x0066 Reserved
@@ -312,7 +292,6 @@ SC
 0x008B ATDSTAT1
 0x008C Reserved
 0x008D ATDDIEN
-Bit 7 6 5 4 3 2 1 Bit 0
 0x008E Reserved
 0x008F PORTAD
 0x0090 ATDDR0H
@@ -377,7 +356,6 @@ SPR2 SPR1 SPR0
 0x00DB SPISR
 0x00DC Reserved
 0x00DD SPIDR
-Bit7 6 5 4 3 2 1 Bit0
 0x00DE Reserved
 0x00DF Reserved
 0x00C8Ð0x00CF SCI (Asynchronous Serial Interface) (continued)
@@ -405,9 +383,7 @@ PWMTST
 Test Only
 $00E7 PWMPRSC
 $00E8 PWMSCLA
-Bit 7 6 5 4 3 2 1 Bit 0
 $00E9 PWMSCLB
-Bit 7 6 5 4 3 2 1 Bit 0
 $00EA PWMSCNTA
 $00EB PWMSCNTB
 $00EC PWMCNT0
@@ -417,32 +393,20 @@ $00EF PWMCNT3
 $00F0 PWMCNT4
 $00F1 PWMCNT5
 $00F2 PWMPER0
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F3 PWMPER1
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F4 PWMPER2
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F5 PWMPER3
-Bit 7 6 5 4 3 2 1 Bit 0
 Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
 38 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
 Rev 01.24
 $00F6 PWMPER4
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F7 PWMPER5
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F8 PWMDTY0
-Bit 7 6 5 4 3 2 1 Bit 0
 $00F9 PWMDTY1
-Bit 7 6 5 4 3 2 1 Bit 0
 $00FA PWMDTY2
-Bit 7 6 5 4 3 2 1 Bit 0
 $00FB PWMDTY3
-Bit 7 6 5 4 3 2 1 Bit 0
 $00FC PWMDTY4
-Bit 7 6 5 4 3 2 1 Bit 0
 $00FD PWMDTY5
-Bit 7 6 5 4 3 2 1 Bit 0
 $00FE Reserved
 PWMIF PWMIE
 0
@@ -847,7 +811,7 @@ Unimplemented
 
 
 //// MMC 4/4
-//0x011C RAMWPC /* RAM Write Protection register, the pdf document appears to be incorrect for this, best not to touch it. */
+//0x011C RAMWPC /* RAM Writ e Protection register, the pdf document appears to be incorrect for this, best not to touch it. */
 //0x011D RAMXGU /* XGATE Upper region limit, this defines how much RAM we give the xgate to work with. */
 //0x011E RAMSHL /* Shared memory lower boundary register, this defines the lower limit of the overlap between XGATE RAM and CPU RAM */
 //0x011F RAMSHU /* Shared memory upper boundary register, this defines the upper limit of the overlap between XGATE RAM and CPU RAM */
