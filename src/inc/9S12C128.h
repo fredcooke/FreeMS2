@@ -62,6 +62,1318 @@
 
 
 
+/*
+0x0000 PORTA
+0x0001 PORTB
+0x0002 DDRA
+0x0003 DDRB
+0x0004 Reserved
+0x0005 Reserved
+0x0006 Reserved
+0x0007 Reserved
+0x0008 PORTE
+Read:
+Bit 7 6 5 4 3 2
+Bit 1 Bit 0
+Write:
+0x0009 DDRE
+Read:
+Bit 7 6 5 4 3 Bit 2
+0 0
+Write:
+0x000A PEAR
+Read:
+NOACCE
+0
+PIPOE NECLK LSTRE RDWE
+0 0
+Write:
+0x000B MODE
+Read:
+MODC MODB MODA
+0
+IVIS
+0
+EMK EME
+Write:
+0x000C PUCR
+Read:
+PUPKE
+0 0
+PUPEE
+0 0
+PUPBE PUPAE
+Write:
+0x000D RDRIV
+Read:
+RDPK
+0 0
+RDPE
+0 0
+RDPB RDPA
+Write:
+0x000E EBICTL
+Read: 0 0 0 0 0 0 0
+ESTR
+Write:
+0x000F Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+28 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x0010Ð0x0014 MMC Map 1 of 4 (HCS12 Module Mapping Control)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0010 INITRM
+Read:
+RAM15 RAM14 RAM13 RAM12 RAM11
+0 0
+RAMHAL
+Write:
+0x0011 INITRG
+Read: 0
+REG14 REG13 REG12 REG11
+0 0 0
+Write:
+0x0012 INITEE
+Read:
+EE15 EE14 EE13 EE12 EE11
+0 0
+EEON
+Write:
+0x0013 MISC
+Read: 0 0 0 0
+EXSTR1 EXSTR0 ROMHM ROMON
+Write:
+0x0014 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0015Ð0x0016 INT Map 1 of 2 (HCS12 Interrupt)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0015 ITCR
+Read: 0 0 0
+WRINT ADR3 ADR2 ADR1 ADR0
+Write:
+0x0016 ITEST
+Read:
+INTE INTC INTA INT8 INT6 INT4 INT2 INT0
+Write:
+0x0017Ð0x0017 MMC Map 2 of 4 (HCS12 Module Mapping Control)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0017 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0018Ð0x0018 Miscellaneous Peripherals (Device User Guide)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0018 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0019Ð0x0019 VREG3V3 (Voltage Regulator)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+$0019 VREGCTRL
+Read: 0 0 0 0 0 LVDS
+LVIE LVIF
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 29
+Rev 01.24
+0x001AÐ0x001B Miscellaneous Peripherals (Device User Guide)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x001A PARTIDH
+Read: ID15 ID14 ID13 ID12 ID11 ID10 ID9 ID8
+Write:
+0x001B PARTIDL
+Read: ID7 ID6 ID5 ID4 ID3 ID2 ID1 ID0
+Write:
+0x001CÐ0x001D MMC Map 3 of 4 (HCS12 Module Mapping Control, Device User Guide)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x001C MEMSIZ0
+Read: reg_sw0 0 eep_sw1 eep_sw0 0 ram_sw2 ram_sw1 ram_sw0
+Write:
+0x001D MEMSIZ1
+Read: rom_sw1 rom_sw0 0 0 0 0 pag_sw1 pag_sw0
+Write:
+0x001EÐ0x001E MEBI Map 2 of 3 (HCS12 Multiplexed External Bus Interface)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x001E INTCR
+Read:
+IRQE IRQEN
+0 0 0 0 0 0
+Write:
+0x001FÐ0x001F INT Map 2 of 2 (HCS12 Interrupt)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x001F HPRIO
+Read:
+PSEL7 PSEL6 PSEL5 PSEL4 PSEL3 PSEL2 PSEL1
+0
+Write:
+0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0020 DBGC1
+Read:
+DBGEN ARM TRGSEL BEGIN DBGBRK
+0
+CAPMOD
+Write:
+0x0021 DBGSC
+Read: AF BF CF 0
+TRG
+Write:
+0x0022 DBGTBH
+Read: Bit 15 Bit 14 Bit 13 Bit 12 Bit 11 Bit 10 Bit 9 Bit 8
+Write:
+0x0023 DBGTBL
+Read: Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Write:
+0x0024 DBGCNT
+Read: TBF 0 CNT
+Write:
+0x0025 DBGCCX
+Read:
+PAGSEL EXTCMP
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+30 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x0026 DBGCCH
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0027 DBGCCL
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0028 DBGC2
+Read:
+BKABEN FULL BDM TAGAB BKCEN TAGC RWCEN RWC
+BKPCT0 Write:
+0x0029 DBGC3
+Read:
+BKAMBH BKAMBL BKBMBH BKBMBL RWAEN RWA RWBEN RWB
+BKPCT1 Write:
+0x002A DBGCAX
+Read:
+PAGSEL EXTCMP
+BKP0X Write:
+0x002B DBGCAH
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+BKP0H Write:
+0x002C DBGCAL
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+BKP0L Write:
+0x002D DBGCBX
+Read:
+PAGSEL EXTCMP
+BKP1X Write:
+0x002E DBGCBH
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+BKP1H Write:
+0x002F DBGCBL
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+BKP1L Write:
+0x0030Ð0x0031 MMC Map 4 of 4 (HCS12 Module Mapping Control)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0030 PPAGE
+Read: 0 0
+PIX5 PIX4 PIX3 PIX2 PIX1 PIX0
+Write:
+0x0031 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0032Ð0x0033 MEBI Map 3 of 3 (HCS12 Multiplexed External Bus Interface)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0032 PORTK(1)
+1. Only applicable in special emulation-only bond outs, for emulation of extended memory map.
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0033 DDRK1
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+$0032 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+$0033 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0020Ð0x002F DBG (Including BKP) Map 1 of 1 (HCS12 Debug) (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 31
+Rev 01.24
+ep0x0040-0x006F TIM
+0x0034Ð0x003F CRG (Clock and Reset Generator)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0034 SYNR
+Read: 0 0
+SYN5 SYN4 SYN3 SYN2 SYN1 SYN0
+Write:
+0x0035 REFDV
+Read: 0 0 0 0
+REFDV3 REFDV2 REFDV1 REFDV0
+Write:
+0x0036
+CTFLG
+TEST ONLY
+Read: TOUT7 TOUT6 TOUT5 TOUT4 TOUT3 TOUT2 TOUT1 TOUT0
+Write:
+0x0037 CRGFLG
+Read:
+RTIF PORF LVRF LOCKIF
+LOCK TRACK
+SCMIF
+SCM
+Write:
+0x0038 CRGINT
+Read:
+RTIE
+0 0
+LOCKIE
+0 0
+SCMIE
+0
+Write:
+0x0039 CLKSEL
+Read:
+PLLSEL PSTP SYSWAI ROAWAI PLLWAI CWAI RTIWAI COPWAI
+Write:
+0x003A PLLCTL
+Read:
+CME PLLON AUTO ACQ
+0
+PRE PCE SCME
+Write:
+0x003B RTICTL
+Read: 0
+RTR6 RTR5 RTR4 RTR3 RTR2 RTR1 RTR0
+Write:
+0x003C COPCTL
+Read:
+WCOP RSBCK
+0 0 0
+CR2 CR1 CR0
+Write:
+0x003D
+FORBYP
+TEST ONLY
+Read:
+RTIBYP COPBYP
+0
+PLLBYP
+0 0
+FCM
+0
+Write:
+0x003E
+CTCTL
+TEST ONLY
+Read: TCTL7 TCTL6 TCTL5 TCTL4 TCLT3 TCTL2 TCTL1 TCTL0
+Write:
+0x003F ARMCOP
+Read: 0 0 0 0 0 0 0 0
+Write: Bit 7 6 5 4 3 2 1 Bit 0
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0040 TIOS
+Read:
+IOS7 IOS6 IOS5 IOS4 IOS3 IOS2 IOS1 IOS0
+Write:
+0x0041 CFORC
+Read: 0 0 0 0 0 0 0 0
+Write: FOC7 FOC6 FOC5 FOC4 FOC3 FOC2 FOC1 FOC0
+0x0042 OC7M
+Read:
+OC7M7 OC7M6 OC7M5 OC7M4 OC7M3 OC7M2 OC7M1 OC7M0
+Write:
+0x0043 OC7D
+Read:
+OC7D7 OC7D6 OC7D5 OC7D4 OC7D3 OC7D2 OC7D1 OC7D0
+Write:
+0x0044 TCNT (hi)
+Read: Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0045 TCNT (lo)
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0046 TSCR1
+Read:
+TEN TSWAI TSFRZ TFFCA
+0 0 0 0
+Write:
+0x0047 TTOV
+Read:
+TOV7 TOV6 TOV5 TOV4 TOV3 TOV2 TOV1 TOV0
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+32 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x0048 TCTL1
+Read:
+OM7 OL7 OM6 OL6 OM5 OL5 OM4 OL4
+Write:
+0x0049 TCTL2
+Read:
+OM3 OL3 OM2 OL2 OM1 OL1 OM0 OL0
+Write:
+0x004A TCTL3
+Read:
+EDG7B EDG7A EDG6B EDG6A EDG5B EDG5A EDG4B EDG4A
+Write:
+0x004B TCTL4
+Read:
+EDG3B EDG3A EDG2B EDG2A EDG1B EDG1A EDG0B EDG0A
+Write:
+0x004C TIE
+Read:
+C7I C6I C5I C4I C3I C2I C1I C0I
+Write:
+0x004D TSCR2
+Read:
+TOI
+0 0 0
+TCRE PR2 PR1 PR0
+Write:
+0x004E TFLG1
+Read:
+C7F C6F C5F C4F C3F C2F C1F C0F
+Write:
+0x004F TFLG2
+Read:
+TOF
+0 0 0 0 0 0 0
+Write:
+0x0050 TC0 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0051 TC0 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0052 TC1 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0053 TC1 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0054 TC2 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0055 TC2 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0056 TC3 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0057 TC3 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0058 TC4 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0059 TC4 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x005A TC5 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x005B TC5 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x005C TC6 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x005D TC6 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x005E TC7 (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 33
+Rev 01.24
+0x005F TC7 (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0060 PACTL
+Read: 0
+PAEN PAMOD PEDGE CLK1 CLK0 PAOVI PAI
+Write:
+0x0061 PAFLG
+Read: 0 0 0 0 0 0
+PAOVF PAIF
+Write:
+0x0062 PACNT (hi)
+Read:
+Bit 15 14 13 12 11 10 9 Bit 8
+Write:
+0x0063 PACNT (lo)
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x0064 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0065 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0066 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0067 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0068 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0069 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006A Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006B Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006C Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006D Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006E Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x006F Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0070Ð0x007F Reserved
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0070Ð
+0x007F
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+34 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x0080Ð0x009F ATD (Analog-to-Digital Converter 10 Bit 8 Channel)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0080 ATDCTL0
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0081 ATDCTL1
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0082 ATDCTL2
+Read:
+ADPU AFFC AWAI ETRIGLE ETRIGP ETRIG ASCIE
+ASCIF
+Write:
+0x0083 ATDCTL3
+Read: 0
+S8C S4C S2C S1C FIFO FRZ1 FRZ0
+Write:
+0x0084 ATDCTL4
+Read:
+SRES8 SMP1 SMP0 PRS4 PRS3 PRS2 PRS1 PRS0
+Write:
+0x0085 ATDCTL5
+Read:
+DJM DSGN SCAN MULT
+0
+CC CB CA
+Write:
+0x0086 ATDSTAT0
+Read:
+SCF
+0
+ETORF FIFOR
+0 CC2 CC1 CC0
+Write:
+0x0087 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0088 ATDTEST0
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0089 ATDTEST1
+Read: 0 0 0 0 0 0 0
+SC
+Write:
+0x008A Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x008B ATDSTAT1
+Read: CCF7 CCF6 CCF5 CCF4 CCF3 CCF2 CCF1 CCF0
+Write:
+0x008C Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x008D ATDDIEN
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+0x008E Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x008F PORTAD
+Read: Bit7 6 5 4 3 2 1 BIT 0
+Write:
+0x0090 ATDDR0H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x0091 ATDDR0L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x0092 ATDDR1H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x0093 ATDDR1L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x0094 ATDDR2H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x0095 ATDDR2L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 35
+Rev 01.24
+0x0096 ATDDR3H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x0097 ATDDR3L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x0098 ATDDR4H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x0099 ATDDR4L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x009A ATDDR5H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x009B ATDDR5L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x009C ATDDR6H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x009D ATDDR6L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x009E ATDDR7H
+Read: Bit15 14 13 12 11 10 9 Bit8
+Write:
+0x009F ATDDR7L
+Read: Bit7 Bit6 0 0 0 0 0 0
+Write:
+0x00A0Ð0x00C7 Reserved
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x00A0Ð
+0x00C7
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x00C8Ð0x00CF SCI (Asynchronous Serial Interface)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x00C8 SCIBDH
+Read: 0 0 0
+SBR12 SBR11 SBR10 SBR9 SBR8
+Write:
+0x00C9 SCIBDL
+Read:
+SBR7 SBR6 SBR5 SBR4 SBR3 SBR2 SBR1 SBR0
+Write:
+0x00CA SCICR1
+Read:
+LOOPS SCISWAI RSRC M WAKE ILT PE PT
+Write:
+0x00CB SCICR2
+Read:
+TIE TCIE RIE ILIE TE RE RWU SBK
+Write:
+0x00CC SCISR1
+Read: TDRE TC RDRF IDLE OR NF FE PF
+Write:
+0x0080Ð0x009F ATD (Analog-to-Digital Converter 10 Bit 8 Channel) (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+36 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x00CD SCISR2
+Read: 0 0 0 0 0
+BRK13 TXDIR
+RAF
+Write:
+0x00CE SCIDRH
+Read: R8
+T8
+0 0 0 0 0 0
+Write:
+0x00CF SCIDRL
+Read: R7 R6 R5 R4 R3 R2 R1 R0
+Write: T7 T6 T5 T4 T3 T2 T1 T0
+0x00D0Ð0x00D7 Reserved
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x00D0Ð
+0x00D7
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x00D8Ð0x00DF SPI (Serial Peripheral Interface)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x00D8 SPICR1
+Read:
+SPIE SPE SPTIE MSTR CPOL CPHA SSOE LSBFE
+Write:
+0x00D9 SPICR2
+Read: 0 0 0
+MODFEN BIDIROE
+0
+SPISWAI SPC0
+Write:
+0x00DA SPIBR
+Read: 0
+SPPR2 SPPR1 SPPR0
+0
+SPR2 SPR1 SPR0
+Write:
+0x00DB SPISR
+Read: SPIF 0 SPTEF MODF 0 0 0 0
+Write:
+0x00DC Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x00DD SPIDR
+Read:
+Bit7 6 5 4 3 2 1 Bit0
+Write:
+0x00DE Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x00DF Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x00C8Ð0x00CF SCI (Asynchronous Serial Interface) (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 37
+Rev 01.24
+0x00E0Ð0x00FF PWM (Pulse Width Modulator)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+$00E0 PWME
+Read: 0 0
+PWME5 PWME4 PWME3 PWME2 PWME1 PWME0
+Write:
+$00E1 PWMPOL
+Read: 0 0
+PPOL5 PPOL4 PPOL3 PPOL2 PPOL1 PPOL0
+Write:
+$00E2 PWMCLK
+Read: 0 0
+PCLK5 PCLK4 PCLK3 PCLK2 PCLK1 PCLK0
+Write:
+$00E3 PWMPRCLK
+Read: 0
+PCKB2 PCKB1 PCKB0
+0
+PCKA2 PCKA1 PCKA0
+Write:
+$00E4 PWMCAE
+Read: 0 0
+CAE5 CAE4 CAE3 CAE2 CAE1 CAE0
+Write:
+$00E5 PWMCTL
+Read: 0
+CON45 CON23 CON01 PSWAI PFRZ
+0 0
+Write:
+$00E6
+PWMTST
+Test Only
+Read: 0 0 0 0 0 0 0 0
+Write:
+$00E7 PWMPRSC
+Read: 0 0 0 0 0 0 0 0
+Write:
+$00E8 PWMSCLA
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00E9 PWMSCLB
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00EA PWMSCNTA
+Read: 0 0 0 0 0 0 0 0
+Write:
+$00EB PWMSCNTB
+Read: 0 0 0 0 0 0 0 0
+Write:
+$00EC PWMCNT0
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00ED PWMCNT1
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00EE PWMCNT2
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00EF PWMCNT3
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00F0 PWMCNT4
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00F1 PWMCNT5
+Read: Bit 7 6 5 4 3 2 1 Bit 0
+Write: 0 0 0 0 0 0 0 0
+$00F2 PWMPER0
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F3 PWMPER1
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F4 PWMPER2
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F5 PWMPER3
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+38 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+$00F6 PWMPER4
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F7 PWMPER5
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F8 PWMDTY0
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00F9 PWMDTY1
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00FA PWMDTY2
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00FB PWMDTY3
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00FC PWMDTY4
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00FD PWMDTY5
+Read:
+Bit 7 6 5 4 3 2 1 Bit 0
+Write:
+$00FE Reserved
+Read:
+PWMIF PWMIE
+0
+PWMLVL
+0 PWM5IN
+PWM5INL PWM5ENA
+Write: PWMRSTRT
+$00FF Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0110Ð0x013F Reserved
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0110Ð
+0x003F
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0140Ð0x017F CAN (Scalable Controller Area Network Ñ MSCAN)(1)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0140 CANCTL0
+Read:
+RXFRM
+RXACT
+CSWAI
+SYNCH
+TIME WUPE SLPRQ INITRQ
+Write:
+0x0141 CANCTL1
+Read:
+CANE CLKSRC LOOPB LISTEN
+0
+WUPM
+SLPAK INITAK
+Write:
+0x0142 CANBTR0
+Read:
+SJW1 SJW0 BRP5 BRP4 BRP3 BRP2 BRP1 BRP0
+Write:
+0x0143 CANBTR1
+Read:
+SAMP TSEG22 TSEG21 TSEG20 TSEG13 TSEG12 TSEG11 TSEG10
+Write:
+0x0144 CANRFLG
+Read:
+WUPIF CSCIF
+RSTAT1 RSTAT0 TSTAT1 TSTAT0
+OVRIF RXF
+Write:
+0x0145 CANRIER
+Read:
+WUPIE CSCIE RSTATE1 RSTATE0 TSTATE1 TSTATE0 OVRIE RXFIE
+Write:
+0x00E0Ð0x00FF PWM (Pulse Width Modulator) (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 39
+Rev 01.24
+0x0146 CANTFLG
+Read: 0 0 0 0 0
+TXE2 TXE1 TXE0
+Write:
+0x0147 CANTIER
+Read: 0 0 0 0 0
+TXEIE2 TXEIE1 TXEIE0
+Write:
+0x0148 CANTARQ
+Read: 0 0 0 0 0
+ABTRQ2 ABTRQ1 ABTRQ0
+Write:
+0x0149 CANTAAK
+Read: 0 0 0 0 0 ABTAK2 ABTAK1 ABTAK0
+Write:
+0x014A CANTBSEL
+Read: 0 0 0 0 0
+TX2 TX1 TX0
+Write:
+0x014B CANIDAC
+Read: 0 0
+IDAM1 IDAM0
+0 IDHIT2 IDHIT1 IDHIT0
+Write:
+0x014C Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x014D Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x014E CANRXERR
+Read: RXERR7 RXERR6 RXERR5 RXERR4 RXERR3 RXERR2 RXERR1 RXERR0
+Write:
+0x014F CANTXERR
+Read: TXERR7 TXERR6 TXERR5 TXERR4 TXERR3 TXERR2 TXERR1 TXERR0
+Write:
+0x0150Ð
+0x0153
+CANIDAR0 -
+CANIDAR3
+Read:
+AC7 AC6 AC5 AC4 AC3 AC2 AC1 AC0
+Write:
+0x0154Ð
+0x0157
+CANIDMR0 -
+CANIDMR3
+Read:
+AM7 AM6 AM5 AM4 AM3 AM2 AM1 AM0
+Write:
+0x0158Ð
+0x015B
+CANIDAR4 -
+CANIDAR7
+Read:
+AC7 AC6 AC5 AC4 AC3 AC2 AC1 AC0
+Write:
+0x015CÐ
+0x015F
+CANIDMR4 -
+CANIDMR7
+Read:
+AM7 AM6 AM5 AM4 AM3 AM2 AM1 AM0
+Write:
+0x0160Ð
+0x016F
+CANRXFG
+Read: FOREGROUND RECEIVE BUFFER see Table 1-2
+Write:
+0x0170Ð
+0x017F
+CANTXFG
+Read:
+FOREGROUND TRANSMIT BUFFER see Table 1-2
+Write:
+1. Not available on the MC9S12GC Family members. Those memory locations should not be accessed.
+Table 1-2. Detailed MSCAN Foreground Receive and Transmit Buffer Layout
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0xXXX0
+Extended ID Read: ID28 ID27 ID26 ID25 ID24 ID23 ID22 ID21
+Standard ID Read: ID10 ID9 ID8 ID7 ID6 ID5 ID4 ID3
+CANxRIDR0 Write:
+0xXXX1
+Extended ID Read: ID20 ID19 ID18 SRR=1 IDE=1 ID17 ID16 ID15
+Standard ID Read: ID2 ID1 ID0 RTR IDE=0
+CANxRIDR1 Write:
+0x0140Ð0x017F CAN (Scalable Controller Area Network Ñ MSCAN)(1) (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+40 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0xXXX2
+Extended ID Read: ID14 ID13 ID12 ID11 ID10 ID9 ID8 ID7
+Standard ID Read:
+CANxRIDR2 Write:
+0xXXX3
+Extended ID Read: ID6 ID5 ID4 ID3 ID2 ID1 ID0 RTR
+Standard ID Read:
+CANxRIDR3 Write:
+0xXXX4Ð
+0xXXXB
+CANxRDSR0Ð
+CANxRDSR7
+Read: DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
+Write:
+0xXXXC CANRxDLR
+Read: DLC3 DLC2 DLC1 DLC0
+Write:
+0xXXXD Reserved
+Read:
+Write:
+0xXXXE CANxRTSRH
+Read: TSR15 TSR14 TSR13 TSR12 TSR11 TSR10 TSR9 TSR8
+Write:
+0xXXXF CANxRTSRL
+Read: TSR7 TSR6 TSR5 TSR4 TSR3 TSR2 TSR1 TSR0
+Write:
+0xxx10
+Extended ID Read:
+ID28 ID27 ID26 ID25 ID24 ID23 ID22 ID21
+CANxTIDR0 Write:
+Standard ID
+Read:
+ID10 ID9 ID8 ID7 ID6 ID5 ID4 ID3
+Write:
+0xxx11
+Extended ID Read:
+ID20 ID19 ID18 SRR=1 IDE=1 ID17 ID16 ID15
+CANxTIDR1 Write:
+Standard ID
+Read:
+ID2 ID1 ID0 RTR IDE=0
+Write:
+0xxx12
+Extended ID Read:
+ID14 ID13 ID12 ID11 ID10 ID9 ID8 ID7
+CANxTIDR2 Write:
+Standard ID
+Read:
+Write:
+0xxx13
+Extended ID Read:
+ID6 ID5 ID4 ID3 ID2 ID1 ID0 RTR
+CANxTIDR3 Write:
+Standard ID
+Read:
+Write:
+0xxx14Ð
+0xxx1B
+CANxTDSR0Ð
+CANxTDSR7
+Read:
+DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
+Write:
+0xxx1C CANxTDLR
+Read:
+DLC3 DLC2 DLC1 DLC0
+Write:
+0xxx1D CONxTTBPR
+Read:
+PRIO7 PRIO6 PRIO5 PRIO4 PRIO3 PRIO2 PRIO1 PRIO0
+Write:
+0xxx1E CANxTTSRH
+Read: TSR15 TSR14 TSR13 TSR12 TSR11 TSR10 TSR9 TSR8
+Write:
+0xxx1F CANxTTSRL
+Read: TSR7 TSR6 TSR5 TSR4 TSR3 TSR2 TSR1 TSR0
+Write:
+Table 1-2. Detailed MSCAN Foreground Receive and Transmit Buffer Layout (continued)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 41
+Rev 01.24
+0x0180Ð0x023F Reserved
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0180Ð
+0x023F
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0240Ð0x027F PIM (Port Interface Module) (Sheet 1 of 3)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0240 PTT
+Read:
+PTT7 PTT6 PTT5 PTT4 PTT3 PTT2 PTT1 PTT0
+Write:
+0x0241 PTIT
+Read: PTIT7 PTIT6 PTIT5 PTIT4 PTIT3 PTIT2 PTIT1 PTIT0
+Write:
+0x0242 DDRT
+Read:
+DDRT7 DDRT7 DDRT5 DDRT4 DDRT3 DDRT2 DDRT1 DDRT0
+Write:
+0x0243 RDRT
+Read:
+RDRT7 RDRT6 RDRT5 RDRT4 RDRT3 RDRT2 RDRT1 RDRT0
+Write:
+0x0244 PERT
+Read:
+PERT7 PERT6 PERT5 PERT4 PERT3 PERT2 PERT1 PERT0
+Write:
+0x0245 PPST
+Read:
+PPST7 PPST6 PPST5 PPST4 PPST3 PPST2 PPST1 PPST0
+Write:
+0x0246 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0247 MODRR
+Read: 0 0 0
+MODRR4 MODRR3 MODRR2 MODRR1 MODRR0
+Write:
+0x0248 PTS
+Read: 0 0 0 0
+PTS3 PTS2 PTS1 PTS0
+Write:
+0x0249 PTIS
+Read: 0 0 0 0 PTIS3 PTIS2 PTIS1 PTIS0
+Write:
+0x024A DDRS
+Read: 0 0 0 0
+DDRS3 DDRS2 DDRS1 DDRS0
+Write:
+0x024B RDRS
+Read: 0 0 0 0
+RDRS3 RDRS2 RDRS1 RDRS0
+Write:
+0x024C PERS
+Read: 0 0 0 0
+PERS3 PERS2 PERS1 PERS0
+Write:
+0x024D PPSS
+Read: 0 0 0 0
+PPSS3 PPSS2 PPSS1 PPSS0
+Write:
+0x024E WOMS
+Read: 0 0 0 0
+WOMS3 WOMS2 WOMS1 WOMS0
+Write:
+0x024F Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0250 PTM
+Read: 0 0
+PTM5 PTM4 PTM3 PTM2 PTM1 PTM0
+Write:
+0x0251 PTIM
+Read: 0 0 PTIM5 PTIM4 PTIM3 PTIM2 PTIM1 PTIM0
+Write:
+0x0252 DDRM
+Read: 0 0
+DDRM5 DDRM4 DDRM3 DDRM2 DDRM1 DDRM0
+Write:
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+42 MC9S12C-Family / MC9S12GC-Family Freescale Semiconductor
+Rev 01.24
+0x0253 RDRM
+Read: 0 0
+RDRM5 RDRM4 RDRM3 RDRM2 RDRM1 RDRM0
+Write:
+0x0254 PERM
+Read: 0 0
+PERM5 PERM4 PERM3 PERM2 PERM1 PERM0
+Write:
+0x0255 PPSM
+Read: 0 0
+PPSM5 PPSM4 PPSM3 PPSM2 PPSM1 PPSM0
+Write:
+0x0256 WOMM
+Read: 0 0
+WOMM5 WOMM4 WOMM3 WOMM2 WOMM1 WOMM0
+Write:
+0x0257 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0258 PTP
+Read:
+PTP7 PTP6 PTP5 PTP4 PTP3 PTP2 PTP1 PTP0
+Write:
+0x0259 PTIP
+Read: PTIP7 PTIP6 PTIP5 PTIP4 PTIP3 PTIP2 PTIP1 PTIP0
+Write:
+0x025A DDRP
+Read:
+DDRP7 DDRP7 DDRP5 DDRP4 DDRP3 DDRP2 DDRP1 DDRP0
+Write:
+0x025B RDRP
+Read:
+RDRP7 RDRP6 RDRP5 RDRP4 RDRP3 RDRP2 RDRP1 RDRP0
+Write:
+0x025C PERP
+Read:
+PERP7 PERP6 PERP5 PERP4 PERP3 PERP2 PERP1 PERP0
+Write:
+0x025D PPSP
+Read:
+PPSP7 PPSP6 PPSP5 PPSP4 PPSP3 PPSP2 PPSP1 PPSS0
+Write:
+0x025E PIEP
+Read:
+PIEP7 PIEP6 PIEP5 PIEP4 PIEP3 PIEP2 PIEP1 PIEP0
+Write:
+0x025F PIFP
+Read:
+PIFP7 PIFP6 PIFP5 PIFP4 PIFP3 PIFP2 PIFP1 PIFP0
+Write:
+0x0260 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0261 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0262 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0263 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0264 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0265 Reserved
+0x0266 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0267 Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0268 PTJ
+Read:
+PTJ7 PTJ6
+0 0 0 0 0 0
+Write:
+0x0269 PTIJ
+Read: PTIJ7 PTIJ6 0 0 0 0 0 0
+Write:
+0x0240Ð0x027F PIM (Port Interface Module) (Sheet 2 of 3)
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+Chapter 1 MC9S12C and MC9S12GC Device Overview (MC9S12C128)
+Freescale Semiconductor MC9S12C-Family / MC9S12GC-Family 43
+Rev 01.24
+0x026A DDRJ
+Read:
+DDRJ7 DDRJ7
+0 0 0 0 0 0
+Write:
+0x026B RDRJ
+Read:
+RDRJ7 RDRJ6
+0 0 0 0 0 0
+Write:
+0x026C PERJ
+Read:
+PERJ7 PERJ6
+0 0 0 0 0 0
+Write:
+0x026D PPSJ
+Read:
+PPSJ7 PPSJ6
+0 0 0 0 0 0
+Write:
+0x026E PIEJ
+Read:
+PIEJ7 PIEJ6
+0 0 0 0 0 0
+Write:
+0x026F PIFJ
+Read:
+PIFJ7 PIFJ6
+0 0 0 0 0 0
+Write:
+0x0270 PTAD
+Read:
+PTAD7 PTAD6 PTAD5 PTAD4 PTAD3 PTAD2 PTAD1 PTAD0
+Write:
+0x0271 PTIAD
+Read: PTIAD7 PTIAD6 PTIAD5 PTIAD4 PTIAD3 PTIAD2 PTIAD1 PTIJ7
+Write:
+0x0272 DDRAD
+Read:
+DDRAD7 DDRAD6 DDRAD5 DDRAD4 DDRAD3 DDRAD2 DDRAD1 DDRAD0
+Write:
+0x0273 RDRAD
+Read:
+RDRAD7 RDRAD6 RDRAD5 RDRAD4 RDRAD3 RDRAD2 RDRAD1 RDRAD0
+Write:
+0x0274 PERAD
+Read:
+PERAD7 PERAD6 PERAD5 PERAD4 PERAD3 PERAD2 PERAD1 PERAD0
+Write:
+0x0275 PPSAD
+Read:
+PPSAD7 PPSAD6 PPSAD5 PPSAD4 PPSAD3 PPSAD2 PPSAD1 PPSAD0
+0x0276-
+0x027F
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0280Ð0x03FF Reserved Space
+Address Name Bit 7 Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0
+0x0280Ð
+0x2FF
+Reserved
+Read: 0 0 0 0 0 0 0 0
+Write:
+0x0300
+Ð0x03FF
+Unimplemented
+Read: 0 0 0 0 0 0 0 0
+*/
+
+
 /* Port Integration Module - Reordered within sections for clarity */
 /* PIM information from 5 tables the last of which is spread over three pages */
 
