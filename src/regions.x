@@ -139,19 +139,20 @@ SECTIONS
     *(.dpage39)
   }  > dpage39
 
-  .ppage3E  :
-  {
-    *(.ppage3E)
-  }  > ppage3E
-
-/* The following two blocks are included just for clarity */
-/* and are the same as text1 and text when paged.         */
-/*  .ppage3D  : (text1 / 0x4000 - 0x7FFF)
+  .ppage3D  : 
   {
     *(.ppage3D)
   }  > ppage3D
 
-  .ppage3F  : (text / 0xC000 - 0xFFFF)
+/* The following two blocks are included just for clarity */
+/* and are the same as text1 and text when paged.         */
+
+/*  .ppage3E  : (text1 / 0x4000 - 0x7FFF)
+  {
+    *(.ppage3E)
+  }  > ppage3E*/
+
+/*  .ppage3F  : (text / 0xC000 - 0xFFFF)
   {
     *(.ppage3F)
   } > ppage3F */

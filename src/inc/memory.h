@@ -88,11 +88,11 @@
 #define TIMETABLESD DFAR(".dpage3C")
 #define TIMETABLES_PPAGE 0x3C
 
-/* General Purpose Page with PPAGE = 0x3E */
-#define FPAGE_FE FFAR(".ppage3E")	/* This is the block that is present in the page window using linear addressing, represents 0x8000 - 0xBFFF ("text2" paged) */
-#define DPAGE_FE DFAR(".ppage3E")	/* This is the block that is present in the page window using linear addressing, represents 0x8000 - 0xBFFF ("text2" paged) */
-//#define FPAGE_FD FFAR(".ppage3D")	/* Represents 0x4000 - 0x7FFF ("text1" paged) */
-//#define DPAGE_FD DFAR(".ppage3D")	/* Represents 0x4000 - 0x7FFF ("text1" paged) */
+/* General Purpose Page with PPAGE = 0x3D macro names are wrong, but too many files to change to fix for now */
+#define FPAGE_FE FFAR(".ppage3D")
+#define DPAGE_FE DFAR(".ppage3D")
+//#define FPAGE_FE FFAR(".ppage3E")	/* Represents 0x4000 - 0x7FFF ("text1" paged) */
+//#define DPAGE_FE DFAR(".ppage3E")	/* Represents 0x4000 - 0x7FFF ("text1" paged) */
 //#define FPAGE_FF FFAR(".ppage3F")	/* Represents 0xC000 - 0xFFFF ("text" paged) */
 //#define DPAGE_FF DFAR(".ppage3F")	/* Represents 0xC000 - 0xFFFF ("text" paged) */
 /* The previous four lines are included for clarity only. */

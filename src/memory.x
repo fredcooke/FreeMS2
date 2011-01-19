@@ -42,15 +42,12 @@
 
   MEMORY
   {
-/*	regs		(r) 	: ORIGIN = 0x0000, LENGTH = 0x0800 /*	2k register space DON'T use! */
-	eeprom		(r) 	: ORIGIN = 0x0800, LENGTH = 0x0800 /*	2K of eeprom for now, 4K requires paging */
+/*	regs		(r) 	: ORIGIN = 0x0000, LENGTH = 0x0400 /*	1k register space DON'T use! */
+/*	text3		(rx)	: ORIGIN = 0x0400, LENGTH = 0x2C00 *//*	11k of linear flash between regs and ram 3D dont use yet need to clear 3D first */   
 
 	/* RAM space split up for tuning and flash burning use as well as GP use */
 	data		(rw)	: ORIGIN = 0x3000, LENGTH = 0x1000 /*  ~4k  general purpose RAM */
-	/* The TX and RX buffers are slightly larger than 2k because the RX buffer */
-	/* needs to also receive a header, checksum and attributes for the data    */
-	/* involved and the TX buffer needs to handle all of those two fold.       */
-/**/
+
 	/* Flash space in linear space while using the page window (16k + 14k + 2k SM = 30k usable, 2k protected) */
 	text1		(rx)	: ORIGIN = 0x4000, LENGTH = 0x3800 /*	Unpaged 14k flash block before page window	*/
 	fixedconf1	(rx)	: ORIGIN = 0x7800, LENGTH = 0x0400 /*	Unpaged   1K flash block before page window */
@@ -69,8 +66,8 @@
     dpage3B	(rx)	: ORIGIN = 0x3FE000, LENGTH = 0x2000
     fpage3C	(rx)	: ORIGIN = 0x400000, LENGTH = 0x2000
     dpage3C	(rx)	: ORIGIN = 0x402000, LENGTH = 0x2000
-    ppage3E	(rx)	: ORIGIN = 0x408000, LENGTH = 0x4000 /* Represents 0x8000 - 0xC000 ("text2" paged) */
-/*  ppage3D	(rx)	: ORIGIN = 0x404000, LENGTH = 0x4000 ** Represents 0x4000 - 0x8000 ("text1" paged) */
+    ppage3D	(rx)	: ORIGIN = 0x404000, LENGTH = 0x4000
+/*  ppage3E	(rx)	: ORIGIN = 0x408000, LENGTH = 0x4000 ** Represents 0x4000 - 0x8000 ("text1" paged) */
 /*  ppage3F	(rx)	: ORIGIN = 0x40C000, LENGTH = 0x3780 ** Represents 0xC000 - 0xFFFF ("text" paged) */
 /*  The previous two lines are included for clarity only. */
 /*	Changes to this file should be reflected in memory.h and Makefile also */

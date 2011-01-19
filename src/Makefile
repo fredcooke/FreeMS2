@@ -251,16 +251,14 @@ LINKOPTS = -no-warn-mismatch,-defsym,vectors_addr=0xF780,-m,m68hc12elfb,-T,hc9s1
 LINKOPTSGC = -no-warn-mismatch,--gc-sections,--print-gc-sections,-defsym,vectors_addr=0xF780,-m,m68hc12elfb,-T,hc9s12c128elfb.x
 # Use this to get a map dump when the linker fails in a confusing way : --print-map
 
-# If using the below option for paged flash, the ADDRESS_TYPE
-# field in the FreeMS2loader script should be updated to match.
 COPYOPTS =  --output-target=srec \
-		--change-section-lma .fixedconf1+0x3D4000 \
-		--change-section-lma .fixedconf2+0x3D4000 \
-		     --change-section-lma .text1+0x3D4000 \
-		      --change-section-lma .text+0x3EC000 \
-		      --change-section-lma .data+0x3EC000 \
-		   --change-section-lma .vectors+0x3EC000 \
-		    --change-section-lma .rodata+0x3EC000 \
+		--change-section-lma .fixedconf1+0x3E4000 \
+		--change-section-lma .fixedconf2+0x3E4000 \
+		     --change-section-lma .text1+0x3E4000 \
+		      --change-section-lma .text+0x3FC000 \
+		      --change-section-lma .data+0x3FC000 \
+		   --change-section-lma .vectors+0x3FC000 \
+		    --change-section-lma .rodata+0x3FC000 \
 		--only-section=.fixedconf1 \
 		--only-section=.fixedconf2 \
 		--only-section=.text \
@@ -271,11 +269,11 @@ COPYOPTS =  --output-target=srec \
 		--change-section-lma .ppage38=0x388000 \
 		--change-section-lma .fpage39=0x398000 \
 		--change-section-lma .dpage39=0x39A000 \
-		--change-section-lma .ppage3E=0x3E8000 \
+		--change-section-lma .ppage3D=0x3D8000 \
 		--only-section=.ppage38 \
 		--only-section=.fpage39 \
 		--only-section=.dpage39 \
-		--only-section=.ppage3E \
+		--only-section=.ppage3D \
 		--change-section-lma .fpage3A=0x3A8000 \
 		--change-section-lma .dpage3A=0x3AA000 \
 		--change-section-lma .fpage3B=0x3B8000 \
@@ -288,9 +286,9 @@ COPYOPTS =  --output-target=srec \
 		--only-section=.fpage3B \
 		--only-section=.dpage3C \
 		--only-section=.fpage3C
-#		--change-section-lma .ppage3D=0x3D8000 \
+#		--change-section-lma .ppage3E=0x3E8000 \
 #		--change-section-lma .ppage3F=0x3F8000 \
-#		--only-section=.ppage3D \	This is left here for clarity only (equivalent to text1 but paged)
+#		--only-section=.ppage3E \	This is left here for clarity only (equivalent to text1 but paged)
 #		--only-section=.ppage3F		This is left here for clarity only (equivalent to text but paged)
 # Changes to the above options should be reflected in memory.x and memory.h also!
 
