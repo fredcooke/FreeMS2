@@ -101,7 +101,7 @@ extern inline void receiveAndIncrement(const unsigned char value){
  */
 void resetReceiveState(unsigned char sourceIDState){
 	/* Set the receive buffer pointer to the beginning */
-	RXBufferCurrentPosition = (unsigned char*)0x3000;//&RXBuffer;
+	RXBufferCurrentPosition = (unsigned char*)0x3800;//&RXBuffer; fixme
 
 	/* Zero the flags, buffer length and checksum */
 	RXPacketLengthReceived = 0;
@@ -195,7 +195,7 @@ void SCI0ISR(){
 			PORTB |= BIT2;
 			/* Look for a start bresetReceiveStateyte to indicate a new packet */
 			if(rawByte == START_BYTE){
-				PORTB |= BIT3;
+				PORTM ^= BIT3;
 				/* If another interface is using it (Note, clear flag, not normal) */
 				if(RXBufferContentSourceID & COM_CLEAR_SCI0_INTERFACE_ID){
 					/* Turn off our reception */
@@ -242,7 +242,7 @@ void SCI0ISR(){
 					/* Set flag to indicate that the next byte should be un-escaped. */
 					RXStateFlags |= RX_SCI_ESCAPED_NEXT;
 				}else if(rawByte == STOP_BYTE){
-					PORTA |= BIT1;
+					PORTM ^= BIT4;
 					/* Turn off reception */
 					SCI0CR2 &= SCICR2_RX_DISABLE;
 					SCI0CR2 &= SCICR2_RX_ISR_DISABLE;
@@ -266,7 +266,7 @@ void SCI0ISR(){
 						Counters.commsChecksumMismatches++;
 					}
 				}else{
-					PORTA |= BIT4;
+					PORTM ^= BIT5;
 					/* If it isn't special process it! */
 					receiveAndIncrement(rawByte);
 				}

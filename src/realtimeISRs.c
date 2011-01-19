@@ -102,6 +102,9 @@ void RTIISR(){
 				/* Increment the seconds counter */
 				Clocks.realTimeClockSeconds++;
 
+				// fuel pump flasher
+				PORTE ^= BIT4;
+
 				if(PORTM){
 					PORTM = 0x00;
 				}else{
