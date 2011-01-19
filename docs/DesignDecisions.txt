@@ -1,0 +1,7 @@
+List of decisions that I've made to streamline development and keep code cleaner (at least for a start)
+
+* No MicroSquirt support.
+* No software P&H support. See http://jbperf.com for a solution.
+* MS2Extra 3.1.0 sequential pin out (and subsets) only.
+* No IAC stepper control
+ 
