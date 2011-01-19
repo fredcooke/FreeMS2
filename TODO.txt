@@ -1,5 +1,5 @@
 Fix up assembly header and/or code to be correct and possibly even work.
-Fix register usage in timers, currently configuring random pins etc.
+Fix constants regarding tick time and other hardware specific stuff.
 Severely cut back on memory usage, migrating everything to flash temporarily
 Modify comms to not use big buffers
 Update location IDs to match reality
