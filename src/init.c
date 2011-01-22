@@ -409,9 +409,9 @@ void initAllPagedRAM(){
 //	initPagedRAMFuel();
 //	initPagedRAMTime();
 //	initPagedRAMTune();
-
-	/* Default to page one for now, perhaps read the configured port straight out of reset in future? TODO */
-	setupPagedRAM(TRUE); // probably something like (PORTA & TableSwitchingMask)
+//
+//	/* Default to page one for now, perhaps read the configured port straight out of reset in future? TODO */
+//	setupPagedRAM(TRUE); // probably something like (PORTA & TableSwitchingMask)
 }
 
 

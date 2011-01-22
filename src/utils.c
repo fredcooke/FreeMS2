@@ -125,19 +125,19 @@ unsigned short safeScale(unsigned short baseValue, unsigned short scaler){
  *
  * @param bool which set of data to enable.
  */
-void setupPagedRAM(unsigned char bool){
-	if(bool){
-		currentFuelRPage = RPAGE_FUEL_ONE;
-		currentTimeRPage = RPAGE_TIME_ONE;
-		currentTuneRPage = RPAGE_TUNE_ONE;
-	}else{
-		currentFuelRPage = RPAGE_FUEL_TWO;
-		currentTimeRPage = RPAGE_TIME_TWO;
-		currentTuneRPage = RPAGE_TUNE_TWO;
-	}
-
-//	RPAGE = currentTuneRPage;
-}
+//void setupPagedRAM(unsigned char bool){
+//	if(bool){
+//		currentFuelRPage = RPAGE_FUEL_ONE;
+//		currentTimeRPage = RPAGE_TIME_ONE;
+//		currentTuneRPage = RPAGE_TUNE_ONE;
+//	}else{
+//		currentFuelRPage = RPAGE_FUEL_TWO;
+//		currentTimeRPage = RPAGE_TIME_TWO;
+//		currentTuneRPage = RPAGE_TUNE_TWO;
+//	}
+//
+////	RPAGE = currentTuneRPage;
+//}
 
 
 /** @brief Reset key state

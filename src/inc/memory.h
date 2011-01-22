@@ -46,6 +46,11 @@
 
 /* http://gcc.gnu.org/onlinedocs/gcc-4.0.0/gcc/Variable-Attributes.html	*/
 
+/* 4k of RAM divided up into special purpose blocks */
+#define RTUNE		__attribute__ ((section (".rtune")))		/* ~4k paged RAM window */
+#define RXBUF		__attribute__ ((section (".rxbuf")))		/* ~2k block of RAM for receive buffer */
+#define TXBUF		__attribute__ ((section (".txbuf")))		/* ~2k block of RAM for transmit buffer */
+
 
 /* Direct flash blocks */
 #define FIXEDCONF1	__attribute__ ((section (".fixedconf1"))) /*  1k unpaged block, primary static configuration.		*/

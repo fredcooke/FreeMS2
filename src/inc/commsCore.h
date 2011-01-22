@@ -67,15 +67,15 @@ EXTERN void populateBasicDatalog(void) FPAGE_FE;
 
 
 /* Global variables for TX (one set per interface) */
-EXTERN unsigned short	TXPacketLengthToSendCAN0;
+//EXTERN unsigned short	TXPacketLengthToSendCAN0;
 EXTERN unsigned short	TXPacketLengthToSendSCI0;
-EXTERN unsigned char*	TXBufferCurrentPositionHandler;
-EXTERN unsigned char*	TXBufferCurrentPositionCAN0;
+//EXTERN unsigned char*	TXBufferCurrentPositionHandler;
+//EXTERN unsigned char*	TXBufferCurrentPositionCAN0;
 EXTERN unsigned char*	TXBufferCurrentPositionSCI0;
 
 
 /* Buffer use and source IDs/flags */
-EXTERN unsigned char	TXBufferInUseFlags;
+//EXTERN unsigned char	TXBufferInUseFlags;
 EXTERN unsigned char	RXBufferContentSourceID;
 /* Masks for TXBufferInUseFlags and RXBufferContentSourceID */
 #define COM_SET_SCI0_INTERFACE_ID		BIT0

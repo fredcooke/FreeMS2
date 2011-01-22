@@ -101,7 +101,7 @@ extern inline void receiveAndIncrement(const unsigned char value){
  */
 void resetReceiveState(unsigned char sourceIDState){
 	/* Set the receive buffer pointer to the beginning */
-	RXBufferCurrentPosition = (unsigned char*)0x3800;//&RXBuffer; fixme
+	RXBufferCurrentPosition = (unsigned char*)&RXBuffer;
 
 	/* Zero the flags, buffer length and checksum */
 	RXPacketLengthReceived = 0;
@@ -309,7 +309,7 @@ void SCI0ISR(){
 			while(!(SCI0SR1 & 0x80)){/* Wait for ever until able to send then move on */}
 			SCI0DRL = STOP_BYTE; // nasty hack that works... means at least one and most 2 stops are sent so stuff works, but is messy... there must be a better way.
 			/* Clear the TX in progress flag */
-			TXBufferInUseFlags &= COM_CLEAR_SCI0_INTERFACE_ID;
+//			TXBufferInUseFlags &= COM_CLEAR_SCI0_INTERFACE_ID;
 		}
 	}
 

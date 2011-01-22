@@ -46,7 +46,10 @@
 /*	text3		(rx)	: ORIGIN = 0x0400, LENGTH = 0x2C00 *//*	11k of linear flash between regs and ram 3D dont use yet need to clear 3D first */   
 
 	/* RAM space split up for tuning and flash burning use as well as GP use */
-	data		(rw)	: ORIGIN = 0x3000, LENGTH = 0x1000 /*  ~4k  general purpose RAM */
+	rxbuf		(rw)	: ORIGIN = 0x3000, LENGTH = 0x0420 /*  ~1k FIXED transmission buffer */
+/*	rxbuf		(rw)	: ORIGIN = 0x3420, LENGTH = 0x0410 *//*  ~1k FIXED reception buffer */
+/*	rtune		(rw)	: ORIGIN = 0x3830, LENGTH = 0x0400 *//*   1k Dynamic area for tuning large etc */
+	data		(rw)	: ORIGIN = 0x3420, LENGTH = 0x0BE0 /*  ~1k general purpose RAM */
 
 	/* Flash space in linear space while using the page window (16k + 14k + 2k SM = 30k usable, 2k protected) */
 	text1		(rx)	: ORIGIN = 0x4000, LENGTH = 0x3800 /*	Unpaged 14k flash block before page window	*/

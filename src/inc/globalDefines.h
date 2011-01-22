@@ -271,38 +271,15 @@
 #define IGNITION_ENABLE BIT1
 #define IGNITION_DISABLE NBIT1
 
-/* Valid RPAGE values :
- *	0xFF - linear
- *	0xFE - linear
- *	0xFD - default
- *	0xFC
- *	0xFB
- *	0xFA
- *	0xF9
- *	0xF8
- */
-/* The reset value of RPAGE is 0xFD					*/
-/* The other 8k of linear RAM space is accessible	*/
-/* through the RPAGE window with 0xFE and 0xFF		*/
-/* 0xFE refers to the 0x2000 to 0x3000 region		*/
-/* 0xFF refers to the 0x3000 to 0x4000 region		*/
-#define RPAGE_TUNE_ONE	0xF8
-#define RPAGE_TUNE_TWO	0xF9
-#define RPAGE_FUEL_ONE	0xFA
-#define RPAGE_FUEL_TWO	0xFB
-#define RPAGE_TIME_ONE	0xFC
-#define RPAGE_TIME_TWO	0xFD
-#define RPAGE_MIN     	0xF8
-#define PPAGE_MIN     	0xE0
-#define EPAGE_MIN     	0x?? // TODO
+#define PPAGE_MIN     	0x38
 
-/* The TX and RX buffers are slightly larger than 2k because the RX buffer */
+/* The TX and RX buffers are slightly larger than 1k because the RX buffer */
 /* needs to also receive a header, checksum and attributes for the data    */
 /* involved and the TX buffer needs to handle all of those two fold.       */
-#define TX_BUFFER_SIZE      0x0820
-#define RX_BUFFER_SIZE      0x0810
-#define TransferTableSize   2048
-#define TX_MAX_PAYLOAD_SIZE 2048
+#define TX_BUFFER_SIZE      0x0420
+#define RX_BUFFER_SIZE      0x0410
+#define HalfTransferTableSize   1024
+#define TX_MAX_PAYLOAD_SIZE 1024
 
 
 #else

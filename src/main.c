@@ -172,15 +172,15 @@ int  main(){ // TODO maybe move this to paged flash ?
 		}
 
 
-		if(!(TXBufferInUseFlags)){
+//		if(!(TXBufferInUseFlags)){
 			/* If the flag for com packet processing is set and the TX buffer is available process the data! */
 			if(RXStateFlags & RX_READY_TO_PROCESS){
 				/* Clear the flag */
 				RXStateFlags &= RX_CLEAR_READY_TO_PROCESS;
 
 				/* Handle the incoming packet */
-				//decodePacketAndRespond();
-			}else if(lastCalcCount != Counters.calculationsPerformed){ // substitute true for full speed continuous stream test...
+				decodePacketAndRespond();
+			}//else if(lastCalcCount != Counters.calculationsPerformed){ // substitute true for full speed continuous stream test...
 
 				/* send asynchronous data log if required */
 //				switch (TablesB.SmallTablesB.datalogStreamType) {
@@ -249,10 +249,10 @@ int  main(){ // TODO maybe move this to paged flash ?
 //						break;
 //					}
 //				}
-				// mechanism to ensure we only send something if the data has been updated
-				lastCalcCount = Counters.calculationsPerformed;
-			}
-		}
+//				// mechanism to ensure we only send something if the data has been updated
+//				lastCalcCount = Counters.calculationsPerformed;
+//			}
+//		}
 		// on once per cycle for main loop heart beat (J0)
 		//PORTJ ^= 0x01;
 

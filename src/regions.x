@@ -48,12 +48,23 @@ SECTIONS
 /* The main RAM region is called "data" and */
 /* can be found in the main linker script   */
 
-/* The RAM page window through which all tunable config is reached. */
-  .data :
+/* The RAM tuning area. */
+/*  .rtune :
   {
-    *(.data)
-  } > data
+    *(.rtune)
+  } > rtune */
 
+/* Comms transmission buffer */
+/*  .txbuf :
+  {
+    *(.txbuf)
+  } > txbuf */
+
+/* Comms reception buffer */
+  .rxbuf :
+  {
+    *(.rxbuf)
+  } > rxbuf
 
 /*&&&&&&&&&&&&&& Linear Flash Regions &&&&&&&&&&&&&&*/
 
