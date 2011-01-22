@@ -1,0 +1,12 @@
+Documents specific to FreeMS2 live here. For general purpose MegaSquirt
+documentation look here:
+
+http://www.megamanual.com
+
+And for MS2Extra documentation visit:
+
+http://msextra.com/doc/index.html#ms2
+
+For info on the sequential hardware mods required see:
+
+http://www.jbperf.com/sequential/index.html
