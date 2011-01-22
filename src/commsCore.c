@@ -148,7 +148,6 @@
  *
  * @author Fred Cooke
  *
- * @bug http://issues.FreeMS2.org/view.php?id=81
  * @todo TODO fix the double/none start byte bug and remove the hack!
  */
 //void finaliseAndSend(unsigned short errorID){
