@@ -255,10 +255,10 @@ COPYOPTS =  --output-target=srec \
 		--change-section-lma .fixedconf1+0x3E4000 \
 		--change-section-lma .fixedconf2+0x3E4000 \
 		     --change-section-lma .text1+0x3E4000 \
-		      --change-section-lma .text+0x3FC000 \
-		      --change-section-lma .data+0x3FC000 \
-		   --change-section-lma .vectors+0x3FC000 \
-		    --change-section-lma .rodata+0x3FC000 \
+		      --change-section-lma .text+0x3EC000 \
+		      --change-section-lma .data+0x3EC000 \
+		   --change-section-lma .vectors+0x3EC000 \
+		    --change-section-lma .rodata+0x3EC000 \
 		--only-section=.fixedconf1 \
 		--only-section=.fixedconf2 \
 		--only-section=.text \
@@ -277,7 +277,7 @@ COPYOPTS =  --output-target=srec \
 		--change-section-lma .fpage3A=0x3A8000 \
 		--change-section-lma .dpage3A=0x3AA000 \
 		--change-section-lma .fpage3B=0x3B8000 \
-		--change-section-lma .dpage3B=0x3BBC00 \
+		--change-section-lma .dpage3B=0x3BA000 \
 		--change-section-lma .fpage3C=0x3C8000 \
 		--change-section-lma .dpage3C=0x3CA000 \
 		--only-section=.dpage3A \
